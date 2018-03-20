@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Наследование в Javascript | Владимир Макушев. Блог.</title>
+  <meta name="author" content="Владимир Макушев">
+  
+  <meta name="description" content="Простыми словами о трудовых буднях, хобби, увлечениях.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Наследование в Javascript"/>
+  <meta property="og:site_name" content="Владимир Макушев. Блог."/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Владимир Макушев. Блог." type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Владимир Макушев. Блог.</a></h1>
+  <h2><a href="/">Простыми словами о фронтенде, айти и жизни.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-29T10:24:42.000Z"><a href="/2015/08/29/javascript-inheritance/">29 August 2015</a></time>
+      
+      
+  
+    <h1 class="title">Наследование в Javascript</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>В данной статье мы будем разбираться в наследовании в Javascript. Мы должны понять что такое prototype, __proto__, Object.create, constructor.<br><a id="more"></a></p>
+<h2 id="Классификация"><a href="#Классификация" class="headerlink" title="Классификация"></a>Классификация</h2><p>Прежде чем говорить о деталях реализации наследования, хорошо бы понимать что это и зачем оно нужно. Главное назначение наследования - это избежание повторения кода (DRY - Do not Repeat Yourself). Оно помогает вынести повторяющееся поведение объектов в одно общее место (родителя) и затем в дочерних объектах использовать его. Делается это при помощи создания <strong>Классов</strong> - обобщенных сведений о группе объектов.</p>
+<p>Поскольку тема наследования так или иначе связана с биологией, то и в качестве примера мы будем рассматривать животных. </p>
+<p><strong>Кролик</strong>. Что мы знаем о нем? У него точно есть глаза, он точно умеет есть. При передвижении он прыгает.<br><strong>Тигр</strong>. У него точно есть глаза, он умеет есть, но при передвижении он бегает.</p>
+<p>Даже на этих двух примерах мы уже понимаем, что у <strong>Тигра</strong> и <strong>Кролика</strong> есть что-то общее. Соответственно, чтобы не повторяться, мы можем вынести их “общее” в класс под названием <strong>Животное</strong>. </p>
+<p>Соответственно, наш пример можно оптимизировать с точки зрения концепции DRY:<br><strong>Животное</strong>. Имеет глаза, умеет есть.<br><strong>Кролик</strong>. Животное. Умеет прыгать.<br><strong>Тигр</strong>. Животное. Умеет бегать.</p>
+<p>Оптимизация на лицо. Таким образом, можно продолжить ряд, и создать еще несколько классов: Хищные, Травоядные. Их можно разделить на парнокопытные и т.д.</p>
+<h2 id="Свойство-proto"><a href="#Свойство-proto" class="headerlink" title="Свойство __proto__"></a>Свойство __proto__</h2><p>Свойство <strong>__proto__</strong> позволяет задать одному объекту в качестве прототипа другой объект. Вообще по своей сути свойство <strong>__proto__</strong> - это просто ссылка на объект-прототип. Когда мы обращаемся к свойству какого-либо объекта, оно будет искаться внутри этого объекта. И если вдруг его там нет, то поиск его продолжится как раз в объекте-прототипе. Это можно использовать для организации наследования свойств.</p>
+<p>Продолжим пример из первой части. И теперь перенесем полученный результат на javascript.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//объект, описывающий животных в целом</span></span><br><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    hasEyes: <span class="literal">true</span>,</span><br><span class="line">    eats: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Rabbit = &#123;</span><br><span class="line">    <span class="comment">//указываем в качестве прототипа - объект Животное</span></span><br><span class="line">    __proto__: Animal,</span><br><span class="line">    jumps: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Tiger = &#123;</span><br><span class="line">    __proto__: Animal,</span><br><span class="line">    <span class="comment">//указываем в качестве прототипа - объект Животное</span></span><br><span class="line">    walks: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Tiger.hasEyes);</span><br><span class="line"><span class="built_in">console</span>.log(Rabbit.eats);</span><br><span class="line"><span class="built_in">console</span>.log(Tiger.jumps);</span><br></pre></td></tr></table></figure></p>
+<p>Можно посмотреть этот пример в <a href="http://jsfiddle.net/ynsuh04f/" target="_blank" rel="noopener">JSFiddle</a>.</p>
+<p>Если мы захотим добавить новое свойство ко всем животным, мы добавим его в объект Animal. И автоматически, благодаря прототипному наследованию, эти свойства станут доступны и <strong>Rabbit</strong> и <strong>Tiger</strong>. При этом мы видим, что ничто не мешает каждому из них иметь собственные свойства.</p>
+<p>Можно выстраивать целый ряд цепочек прототипов, описывая наследование глубже и глубже. </p>
+<p>Когда мы создаем объект, то его прототипом неявно является Object. И лишь у него свойство <strong>__proto__</strong> будет равно null.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__.__proto__);</span><br></pre></td></tr></table></figure></p>
+<p>Важно отметить, что свойство <strong>__proto__</strong> доступно во всех браузерах, кроме IE10 и ниже. Поэтому, если в проекте над которым вы работаете, важна поддержка браузера IE10 и ниже, данный способ вам доступен не будет.</p>
+<h2 id="Object-create-null"><a href="#Object-create-null" class="headerlink" title="Object.create(null)"></a>Object.create(null)</h2><p>Данный метод позволяет создавать объекты на основе других объектов. Грубо говоря, делает он тоже самое, что делали мы в примере выше. Разница лишь в том, что мы указывали <strong>__proto__</strong> вручную. Для той же самой задачи мы могли бы использовать и Object.create.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    hasEyes: <span class="literal">true</span>,</span><br><span class="line">    eats: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Rabbit = <span class="built_in">Object</span>.create(Animal);</span><br><span class="line">Rabbit.jumps = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Tiger = <span class="built_in">Object</span>.create(Animal);</span><br><span class="line">Tiger.walks = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Tiger.hasEyes);</span><br><span class="line"><span class="built_in">console</span>.log(Rabbit.eats);</span><br><span class="line"><span class="built_in">console</span>.log(Tiger.jumps);</span><br></pre></td></tr></table></figure>
+<p>Результат будет тем же, что и предыдущий пример. Если мы захотим вывести все свойства объекта, то мы можем воспользоваться конструкцией<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Rabbit)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>В этом случае в консоль будут выведены свойства объекта Rabbit и свойства объекта Animal. Если мы хотим вывести только <strong>собственные</strong> свойства объекта, мы должны использовать метод <strong>.hasOwnProperty</strong>. Кстати, попробуйте догадаться откуда взялся этот метод у Rabbit, ведь мы его туда не добавляли.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Rabbit)&#123;</span><br><span class="line">	<span class="keyword">if</span>(Rabbit.hasOwnProperty(prop))&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(prop);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Созданные таким способом объекты всегда будут иметь в качестве последнего (самого верхнего) прототипа - <strong>Object</strong>. Да, именно там хранятся методы <strong>toString</strong>, <strong>hasOwnProperty</strong> и т.д.</p>
+<p>Однако, <strong>Object.create</strong> позволяет создавать объекты и без прототипа вовсе. Например, это может быть полезно для различных хранилищ в виде коллекций. Для этого достаточно передать в качестве аргумента <strong>null</strong>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__ === <span class="literal">undefined</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>Ну и помимо прочего <strong>Object.create</strong> может помогать задавать различные дескрипторы свойств. На них сейчас я останавливаться не буду.</p>
+<p>Важно знать, что <strong>Object.create</strong> поддерживается не всеми браузерами (IE9+, FF4+, Safari 5+, Chrome 5+, Opera 11.60+).</p>
+<h2 id="Свойство-prototype"><a href="#Свойство-prototype" class="headerlink" title="Свойство prototype"></a>Свойство <strong>prototype</strong></h2><p>До этого мы рассматривали примеры создания объектов с использованием {}. На реальных проектах, обычно, используют подход с созданием объекта через функцию-конструктор с использованием оператора <strong>new</strong>. Возникает вопрос: как же в этом случае указать объект-прототип?</p>
+<p>Первое что приходит в голову:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    hasEyes: <span class="literal">true</span>,</span><br><span class="line">    eats: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//описываем функцию-конструктор</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//устаналиваем прототип</span></span><br><span class="line">	<span class="keyword">this</span>.__proto__ = Animal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//создаем кролика через new</span></span><br><span class="line"><span class="keyword">var</span> rabbit = <span class="keyword">new</span> Rabbit();</span><br><span class="line"><span class="built_in">console</span>.log(rabbit.hasEyes); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>Очевидное решение оказалось рабочим. Однако, мы говорили о том, что свойство <strong>__proto__</strong> не поддерживается браузерами IE10 и ниже. </p>
+<p>Когда мы описываем функцию-конструктор, то визуально она ничем не отличается от обычной функции. Все, что делает ее конструктором это оператор <strong>new</strong> с которым она вызывается при создании объекта. А что делает <strong>new</strong>?</p>
+<p>Оператор <strong>new</strong> говорит интепретатору: “При создании нового объекта, установи ему в качестве <strong>__proto__</strong> то, что у функции-конструктора находится в свойстве <strong>prototype</strong>“.</p>
+<p>Окей, стало быть нам нужно сделать вот так:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    hasEyes: <span class="literal">true</span>,</span><br><span class="line">    eats: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//описываем функцию-конструктор</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//меняем свойство у функции-конструктора</span></span><br><span class="line">Rabbit.prototype = Animal;</span><br><span class="line"></span><br><span class="line"><span class="comment">//создаем кролика через new</span></span><br><span class="line"><span class="keyword">var</span> rabbit = <span class="keyword">new</span> Rabbit();</span><br><span class="line"><span class="built_in">console</span>.log(rabbit.hasEyes); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>Таким образом, когда мы поменяли свойство <strong>prototype</strong> и вызвали функции конструктор с оператором <strong>new</strong>, мы как бы сказали интерпретатору: “При создании нового объекта, установи ему в качестве <strong>__proto__</strong> объект <strong>Animal</strong>.</p>
+<h2 id="Свойство-constructor"><a href="#Свойство-constructor" class="headerlink" title="Свойство constructor"></a>Свойство constructor</h2><p>Выше я упомянул, что при вызове функции с <strong>new</strong> будет создан объект, в <strong>__proto__</strong> которого будет помещено то, что у функции-конструктора находится в свойстве <strong>prototype</strong>. Но я не сказал ЧТО находится в этом самом свойстве по умолчанию. Пришло время.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	Rabbit.prototype = &#123;</span><br><span class="line">		<span class="keyword">constructor</span>: Rabbit</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Здесь я руками задал прототип, который по умолчанию генерируется автоматически. </p>
+<p>Любая функция имеет свойство <strong>prototype</strong>, в котором находится объект. У этого объекта есть свойство <strong>constructor</strong>, которое указывает на саму функцию. Сам javascript никак не использует это свойство. Но оно может быть полезно в случаях, когда мы получили объект откуда-то из вне (например, из фабрики классов). И нам нужно создать точно такой же объект. Тогда-то нам и может пригодиться это свойство:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rabbit = AnimalFactory.get(<span class="string">'rabbit'</span>);</span><br><span class="line"><span class="keyword">var</span> anotherRabbit = <span class="keyword">new</span> rabbit.constructor();</span><br></pre></td></tr></table></figure>
+<p>Еще одним важным моментом является то, что перезаписывание свойства <strong>prototype</strong> может привести к потере свойства <strong>constructor</strong> по невнимательности. Например:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Rabbit.prototype = &#123;</span><br><span class="line">	jumps: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>В примере выше мы заменили <strong>prototype</strong> по-умолчанию, на свой объект. И конечно же, забыл указать свойство <strong>constructor</strong>. Во избежание подобных недоразумений, принято не заменять, а дополнять свойство <strong>prototype</strong>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Rabbit.prototype.jumps = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Кроссбраузерное-наследование"><a href="#Кроссбраузерное-наследование" class="headerlink" title="Кроссбраузерное наследование"></a>Кроссбраузерное наследование</h2><p>Теперь полученных знаний должно быть достаточно для того, чтобы написать универсальную функцию, которая будет делать все то, о чем мы говорили выше.</p>
+<h3 id="Эмуляция-Object-create"><a href="#Эмуляция-Object-create" class="headerlink" title="Эмуляция Object.create"></a>Эмуляция Object.create</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherits</span>(<span class="params">Parent</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//создаем временную функцию</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="comment">//указываем в качестве прототипа - родителя</span></span><br><span class="line">    F.prototype = Parent;</span><br><span class="line">    <span class="comment">//создаем объект с указанным прототипом</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    hasEyes: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Rabbit = inherits(Animal);</span><br><span class="line">Rabbit.jumps = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Rabbit.jumps);</span><br><span class="line"><span class="built_in">console</span>.log(Rabbit.hasEyes);</span><br></pre></td></tr></table></figure>
+<p>Такой подход будет работать везде. Можно сказать, что это своего рода полифилл для Object.create, но за тем лишь исключением, что здесь не будет возможности задавать дескрипторы свойств.</p>
+<h3 id="Наследование-на-уровне-“классов”"><a href="#Наследование-на-уровне-“классов”" class="headerlink" title="Наследование на уровне “классов”"></a>Наследование на уровне “классов”</h3><p>В примере выше мы манипулировали объектами. Но как я уже упоминал, зачастую в проектах используют другой подход в описании классов. </p>
+<p>Ну что ж, вызов принят:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherits</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.constructor = Child;</span><br><span class="line">    &#125;</span><br><span class="line">    F.prototype = Parent.prototype;</span><br><span class="line">    F.prototype._super = Parent.prototype.constructor;</span><br><span class="line">    Child.prototype = <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.hasEyes = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rabbit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//вызываем конструктор родителя</span></span><br><span class="line">    <span class="keyword">this</span>._super();</span><br><span class="line">    <span class="comment">//дальше определяем собственные свойства</span></span><br><span class="line">    <span class="keyword">this</span>.jumps = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//наследуемся</span></span><br><span class="line">inherits(Rabbit, Animal);</span><br><span class="line"></span><br><span class="line"><span class="comment">//создаем кролика</span></span><br><span class="line"><span class="keyword">var</span> rabbit = <span class="keyword">new</span> Rabbit();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(rabbit.jumps);</span><br><span class="line"><span class="built_in">console</span>.log(rabbit.hasEyes);</span><br></pre></td></tr></table></figure></p>
+<p>Этот пример в <a href="http://jsfiddle.net/vusxnh2e/" target="_blank" rel="noopener">JSFiddle</a>.</p>
+<p>Как мы видим, в функции <strong>inherits</strong> мы снова создаем временную функцию. Правда на этот раз, в качестве свойства <strong>prototype</strong> мы выставляем свойство <strong>prototype</strong> родительского класса. Это происходит, потому что на данный момент объекта, который мы могли бы туда подставить у нас нет. Да и вообще как показывает пример дальше, объекта <strong>Animal</strong> у нас даже и не создается. Соответственно понимаем, что когда функци <strong>F()</strong> будет вызвана с оператором <strong>new</strong>, то в <strong>__proto__</strong> будет помещен объект из свойства <strong>prototype</strong> класса <strong>Animal</strong>. А состоит он, как мы говорили выше, из свойства <strong>constructor</strong>, которое будет указывать на саму функцию <strong>Animal</strong>. </p>
+<p>Дальше в качестве бонуса, мы добавляем в свойство <strong>prototype</strong> свойство <strong>_super</strong>, которое будет указывать на конструктор родителя. В дочернем классе мы должны обязательно его вызвать. Поскольку вызван он будет в контексте дочернего объекта, то и все свойства (<strong>this</strong>) будут записаны в дочерний объект.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Русский/">Русский</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Паттерны/">Паттерны</a>, <a href="/tags/Наследование/">Наследование</a>, <a href="/tags/prototype/">prototype</a>, <a href="/tags/Object-create/">Object.create</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Комментарии</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=907270236144918";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://blog.makushev.com/2015/08/29/javascript-inheritance/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Поиск">
+    <input type="hidden" name="q" value="site:blog.makushev.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Категории</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/English/">English</a><small>2</small></li>
+  
+    <li><a href="/categories/Русский/">Русский</a><small>16</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Метки</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Destructuring/">Destructuring</a><small>1</small></li>
+  
+    <li><a href="/tags/Dispatcher/">Dispatcher</a><small>2</small></li>
+  
+    <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
+  
+    <li><a href="/tags/IE/">IE</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
+  
+    <li><a href="/tags/Mediator/">Mediator</a><small>2</small></li>
+  
+    <li><a href="/tags/Object-create/">Object.create</a><small>1</small></li>
+  
+    <li><a href="/tags/Observer/">Observer</a><small>1</small></li>
+  
+    <li><a href="/tags/Pub-Sub/">Pub/Sub</a><small>1</small></li>
+  
+    <li><a href="/tags/Template-strings/">Template strings</a><small>1</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
+  
+    <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
+  
+    <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/bug/">bug</a><small>2</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>1</small></li>
+  
+    <li><a href="/tags/digitalocean/">digitalocean</a><small>2</small></li>
+  
+    <li><a href="/tags/event-driven/">event-driven</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/google-chrome/">google chrome</a><small>2</small></li>
+  
+    <li><a href="/tags/gpu/">gpu</a><small>2</small></li>
+  
+    <li><a href="/tags/issue/">issue</a><small>2</small></li>
+  
+    <li><a href="/tags/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/tags/link/">link</a><small>2</small></li>
+  
+    <li><a href="/tags/log/">log</a><small>2</small></li>
+  
+    <li><a href="/tags/momondo/">momondo</a><small>1</small></li>
+  
+    <li><a href="/tags/node-js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/non-blocking-I-O/">non-blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/prototype/">prototype</a><small>1</small></li>
+  
+    <li><a href="/tags/referral/">referral</a><small>2</small></li>
+  
+    <li><a href="/tags/w3c/">w3c</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>2</small></li>
+  
+    <li><a href="/tags/Деструктуризация/">Деструктуризация</a><small>1</small></li>
+  
+    <li><a href="/tags/Наследование/">Наследование</a><small>1</small></li>
+  
+    <li><a href="/tags/Паттерны/">Паттерны</a><small>5</small></li>
+  
+    <li><a href="/tags/Шаблонные-строки/">Шаблонные строки</a><small>1</small></li>
+  
+    <li><a href="/tags/авиабилеты/">авиабилеты</a><small>1</small></li>
+  
+    <li><a href="/tags/исследование/">исследование</a><small>1</small></li>
+  
+    <li><a href="/tags/литература/">литература</a><small>2</small></li>
+  
+    <li><a href="/tags/обучение/">обучение</a><small>1</small></li>
+  
+    <li><a href="/tags/саморазвитие/">саморазвитие</a><small>1</small></li>
+  
+    <li><a href="/tags/сила-воли/">сила воли</a><small>1</small></li>
+  
+    <li><a href="/tags/стрелочные-функции/">стрелочные функции</a><small>1</small></li>
+  
+    <li><a href="/tags/экономия/">экономия</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Владимир Макушев
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30607982 = new Ya.Metrika({id:30607982,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30607982" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

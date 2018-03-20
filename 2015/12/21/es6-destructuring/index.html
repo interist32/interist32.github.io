@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Destructuring в Javascript. | Владимир Макушев. Блог.</title>
+  <meta name="author" content="Владимир Макушев">
+  
+  <meta name="description" content="Простыми словами о трудовых буднях, хобби, увлечениях.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Destructuring в Javascript."/>
+  <meta property="og:site_name" content="Владимир Макушев. Блог."/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Владимир Макушев. Блог." type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Владимир Макушев. Блог.</a></h1>
+  <h2><a href="/">Простыми словами о фронтенде, айти и жизни.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-21T15:34:37.000Z"><a href="/2015/12/21/es6-destructuring/">21 December 2015</a></time>
+      
+      
+  
+    <h1 class="title">Destructuring в Javascript.</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Деструктуризация или разбиение на элементы - новая возможность в языке Javascript (ES2015/ES6), которая позволяет извлекать данные из массивов и объектов, используя синтаксис объявления массивов и литералов объектов соответственно.<br><a id="more"></a></p>
+<h2 id="Деструктуризация-массивов"><a href="#Деструктуризация-массивов" class="headerlink" title="Деструктуризация массивов"></a>Деструктуризация массивов</h2><p>Мне кажется начинать изучение этой темы лучше с массивов. Оно как-то нагляднее что ли выглядит, особенно, когда в первый раз начинаешь читать об этом.</p>
+<h3 id="Объявление-переменных"><a href="#Объявление-переменных" class="headerlink" title="Объявление переменных"></a>Объявление переменных</h3><p>В следующем примере мы используем деструктуризацию для задания значения переменных из массива:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> [a,b] = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+<p>Казалось бы, ничего интересного, и даже в старом стиле вроде как нагляднее. Но использование деструктуризации позволяет нам, например, поменять местами значения переменных без использования третьей:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> [a,b] = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line">[a,b] = [b,a];</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> _ref = [b, a];</span><br><span class="line">a = _ref[<span class="number">0</span>];</span><br><span class="line">b = _ref[<span class="number">1</span>];</span><br><span class="line">_ref;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Возврат-несколько-значений"><a href="#Возврат-несколько-значений" class="headerlink" title="Возврат несколько значений"></a>Возврат несколько значений</h3><p>Функции всегда могли возвращать массивы. Но благодаря деструктуризации мы можем получить дополнительную гибкость.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAges</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="number">14</span>, <span class="number">15</span>, <span class="number">18</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> [sasha, masha, dasha] = getAges();</span><br><span class="line"><span class="built_in">console</span>.log(sasha);</span><br><span class="line"><span class="comment">//14</span></span><br><span class="line"><span class="built_in">console</span>.log(masha);</span><br><span class="line"><span class="comment">//15</span></span><br><span class="line"><span class="built_in">console</span>.log(dasha);</span><br><span class="line"><span class="comment">//18</span></span><br></pre></td></tr></table></figure></p>
+<p>В ES5 такой пример свелся либо к вызову функции <strong><em>getAges()</em></strong> 3 раза, либо к дополнительной переменной, которая бы хранила значение функции. </p>
+<h3 id="Игнорирование-значений"><a href="#Игнорирование-значений" class="headerlink" title="Игнорирование значений"></a>Игнорирование значений</h3><p>Допустим, мы знаем, что предыдущая функции возвращает всегда массив из 3-х возрастов. Если нам не нужны все 3 из них, мы можем просто игнорировать ненужные значения, опуская названия переменных:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAges</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="number">14</span>, <span class="number">15</span>, <span class="number">18</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> [sasha, , dasha] = getAges();</span><br><span class="line"><span class="built_in">console</span>.log(sasha);</span><br><span class="line"><span class="comment">//14</span></span><br><span class="line"><span class="built_in">console</span>.log(dasha);</span><br><span class="line"><span class="comment">//18</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Деструктуризация-объектов"><a href="#Деструктуризация-объектов" class="headerlink" title="Деструктуризация объектов"></a>Деструктуризация объектов</h2><p>После того, как мы поняли суть работы с массивами, понять как работает деструктуризация с объектами труда не составит.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>: <span class="string">'Vladimir'</span>, <span class="attr">lastname</span>: <span class="string">'Makushev'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> &#123;name, lastname&#125; = person;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'Vladimir'</span>, <span class="attr">lastname</span>: <span class="string">'Makushev'</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> name = person.name;</span><br><span class="line"><span class="keyword">var</span> lastname = person.lastname;</span><br></pre></td></tr></table></figure></p>
+<p>В примере выше мы создали две новые переменные, значения которых были взяты из свойств объекта с точно таким же именем. А если мы хотим объявить новые переменные и присвоить им значения старых? Пожалуйста:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>: <span class="string">'Vladimir'</span>, <span class="attr">lastname</span>: <span class="string">'Makushev'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">name</span>: personName, <span class="attr">lastname</span>: personSurname&#125; = person;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'Vladimir'</span>, <span class="attr">lastname</span>: <span class="string">'Makushev'</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> personName = person.name;</span><br><span class="line"><span class="keyword">var</span> personSurname = person.lastname;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Вложенные-объекты"><a href="#Вложенные-объекты" class="headerlink" title="Вложенные объекты"></a>Вложенные объекты</h3><p>Часто бывает что у нас есть объект с опциями или метаданными, и на основе него мы хотим сформировать какой-то другой, новый объект. Давайте рассмотрим следующий пример:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  showCloseButton: <span class="literal">true</span>,</span><br><span class="line">  title: <span class="string">'Some title'</span>,</span><br><span class="line">  description: &#123;</span><br><span class="line">    isBold: <span class="literal">true</span>,</span><br><span class="line">    isItalic: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  urls: [<span class="string">'http://makushev.com'</span>, <span class="string">'http://blog.makushev.com'</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">title</span>: modalTitle, <span class="attr">urls</span>: myUrls&#125; = options;</span><br><span class="line"><span class="built_in">console</span>.log(modalTitle);</span><br><span class="line"><span class="comment">//Some title</span></span><br><span class="line"><span class="built_in">console</span>.log(myUrls);</span><br><span class="line"><span class="comment">//["http://makushev.com", "http://blog.makushev.com"]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Объект-как-параметр-функции"><a href="#Объект-как-параметр-функции" class="headerlink" title="Объект как параметр функции"></a>Объект как параметр функции</h3><p>Да, деструктуризация будет работать и в этом случае.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES2015</span></span><br><span class="line"><span class="keyword">var</span> user = &#123; </span><br><span class="line">  id: <span class="number">32</span>, </span><br><span class="line">  displayName: <span class="string">"interist32"</span>,</span><br><span class="line">  fullName: &#123; </span><br><span class="line">      firstName: <span class="string">"Vladimir"</span>,</span><br><span class="line">      lastName: <span class="string">"Makushev"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Просто возвращает id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getId</span>(<span class="params">&#123;id&#125;</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//выводит настоящее имя пользователя</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">&#123;displayName, fullName: &#123;firstName: normalName&#125;&#125;</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//здесь в качестве параметра мы используем деструктуризацию</span></span><br><span class="line">  <span class="comment">//мы оставляем displayName как есть</span></span><br><span class="line">  <span class="comment">//а user.fullName.firstName определяем как переменную normalName</span></span><br><span class="line">  <span class="keyword">return</span> displayName + <span class="string">' is '</span> + normalName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getId(user));</span><br><span class="line"><span class="comment">//32</span></span><br><span class="line"><span class="built_in">console</span>.log(getName(user));</span><br><span class="line"><span class="comment">//interist32 is Vladimir</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Итог"><a href="#Итог" class="headerlink" title="Итог"></a>Итог</h2><p>Использование деструктуризации может помочь сократить количество строк кода и сделать его более читабельным. Безусловно, это очередной инструмент, которым нужно уметь пользоваться.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Русский/">Русский</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ES2015-ES6/">ES2015/ES6</a>, <a href="/tags/Destructuring/">Destructuring</a>, <a href="/tags/Деструктуризация/">Деструктуризация</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Комментарии</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=907270236144918";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://blog.makushev.com/2015/12/21/es6-destructuring/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Поиск">
+    <input type="hidden" name="q" value="site:blog.makushev.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Категории</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/English/">English</a><small>2</small></li>
+  
+    <li><a href="/categories/Русский/">Русский</a><small>16</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Метки</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Destructuring/">Destructuring</a><small>1</small></li>
+  
+    <li><a href="/tags/Dispatcher/">Dispatcher</a><small>2</small></li>
+  
+    <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
+  
+    <li><a href="/tags/IE/">IE</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
+  
+    <li><a href="/tags/Mediator/">Mediator</a><small>2</small></li>
+  
+    <li><a href="/tags/Object-create/">Object.create</a><small>1</small></li>
+  
+    <li><a href="/tags/Observer/">Observer</a><small>1</small></li>
+  
+    <li><a href="/tags/Pub-Sub/">Pub/Sub</a><small>1</small></li>
+  
+    <li><a href="/tags/Template-strings/">Template strings</a><small>1</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
+  
+    <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
+  
+    <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/bug/">bug</a><small>2</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>1</small></li>
+  
+    <li><a href="/tags/digitalocean/">digitalocean</a><small>2</small></li>
+  
+    <li><a href="/tags/event-driven/">event-driven</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/google-chrome/">google chrome</a><small>2</small></li>
+  
+    <li><a href="/tags/gpu/">gpu</a><small>2</small></li>
+  
+    <li><a href="/tags/issue/">issue</a><small>2</small></li>
+  
+    <li><a href="/tags/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/tags/link/">link</a><small>2</small></li>
+  
+    <li><a href="/tags/log/">log</a><small>2</small></li>
+  
+    <li><a href="/tags/momondo/">momondo</a><small>1</small></li>
+  
+    <li><a href="/tags/node-js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/non-blocking-I-O/">non-blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/prototype/">prototype</a><small>1</small></li>
+  
+    <li><a href="/tags/referral/">referral</a><small>2</small></li>
+  
+    <li><a href="/tags/w3c/">w3c</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>2</small></li>
+  
+    <li><a href="/tags/Деструктуризация/">Деструктуризация</a><small>1</small></li>
+  
+    <li><a href="/tags/Наследование/">Наследование</a><small>1</small></li>
+  
+    <li><a href="/tags/Паттерны/">Паттерны</a><small>5</small></li>
+  
+    <li><a href="/tags/Шаблонные-строки/">Шаблонные строки</a><small>1</small></li>
+  
+    <li><a href="/tags/авиабилеты/">авиабилеты</a><small>1</small></li>
+  
+    <li><a href="/tags/исследование/">исследование</a><small>1</small></li>
+  
+    <li><a href="/tags/литература/">литература</a><small>2</small></li>
+  
+    <li><a href="/tags/обучение/">обучение</a><small>1</small></li>
+  
+    <li><a href="/tags/саморазвитие/">саморазвитие</a><small>1</small></li>
+  
+    <li><a href="/tags/сила-воли/">сила воли</a><small>1</small></li>
+  
+    <li><a href="/tags/стрелочные-функции/">стрелочные функции</a><small>1</small></li>
+  
+    <li><a href="/tags/экономия/">экономия</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Владимир Макушев
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30607982 = new Ya.Metrika({id:30607982,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30607982" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

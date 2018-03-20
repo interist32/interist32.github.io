@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Шаблонные строки | Владимир Макушев. Блог.</title>
+  <meta name="author" content="Владимир Макушев">
+  
+  <meta name="description" content="Простыми словами о трудовых буднях, хобби, увлечениях.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Шаблонные строки"/>
+  <meta property="og:site_name" content="Владимир Макушев. Блог."/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Владимир Макушев. Блог." type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Владимир Макушев. Блог.</a></h1>
+  <h2><a href="/">Простыми словами о фронтенде, айти и жизни.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-24T08:52:40.000Z"><a href="/2015/12/24/es6-template-strings/">24 December 2015</a></time>
+      
+      
+  
+    <h1 class="title">Шаблонные строки</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Не знаю как правильно перевести <strong><em>template strings</em></strong> на русский язык, но мне кажется термин <strong><em>шаблонные строки</em></strong> будет наиболее близок к сути. Новая фича ES2015, судя по комментам в интернете, вызвала противоположные отзывы. Кто-то в восторге и кричит “Наконец-то”, кто-то консервативно бубнит “и так было нормально. В чем бенефит?”. Ну а мы давайте разберемся в чем собственно суть?<br><a id="more"></a></p>
+<h2 id="Backtick-обратный-штрих"><a href="#Backtick-обратный-штрих" class="headerlink" title="Backtick (обратный штрих)"></a>Backtick (обратный штрих)</h2><p>Вообще не помню, чтобы когда-либо использовал понятие “обратный штрих”. Были кавычки, были апострофы, одинарная кавычка (которая апостроф, опять же). Ну в общем и целом это и есть символ <strong><em>`</em></strong>, который лег в основу шаблонных строк в ES2015.</p>
+<p>Раньше разработчиков можно было разделить на тех, кто обрамляет строки в апострофы (называя их одинарными кавычками), и кавычки (обычные двойные). Теперь, благодаря шаблонным строкам, две эти группы программистов могут быть объединены:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">`What's up man? This is "ES2015"!`</span>;</span><br></pre></td></tr></table></figure></p>
+<p>Под шаблонными строками понимается строка, заключенная в обратные штрихи (backticks).</p>
+<h2 id="Выражения"><a href="#Выражения" class="headerlink" title="Выражения"></a>Выражения</h2><p>Теперь внутрь шаблонных строк можно помещать и выражения. Для этого используется следующий синтаксис:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">`Today is <span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>`</span>;</span><br></pre></td></tr></table></figure></p>
+<p>Все, что находится ${здесь}, является выражением, которое будет вычисляться на этапе исполнения кода.</p>
+<h2 id="Многострочность"><a href="#Многострочность" class="headerlink" title="Многострочность"></a>Многострочность</h2><p>Шаблонные строки дают возможность иметь в коде многострочные шаблоны. Раньше для решения задачи, когда в коде у вас была разметка, и при этом, чтобы код был читабельным, приходилось изобретать что-то вроде:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> template = [</span><br><span class="line">    <span class="string">'&lt;h1&gt;'</span> + <span class="string">'Title'</span> + <span class="string">'&lt;/h1&gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;div&gt;'</span> + <span class="string">'Some content'</span> + <span class="string">'&lt;/div&gt;'</span></span><br><span class="line">  ];</span><br><span class="line"><span class="built_in">console</span>.log(template.join(<span class="string">'\n'</span>));</span><br></pre></td></tr></table></figure></p>
+<p>Теперь все это стало проще:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> template2 = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;h1&gt;Title&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;div&gt;Some content&lt;/div&gt;`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template2);</span><br></pre></td></tr></table></figure></p>
+<p>А если вспомнить про <a href="/2015/12/21/es6-destructuring/">Деструктуризацию</a>, то и вовсе можно решать шаблонные задачи весьма элегантно:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> post = &#123;</span><br><span class="line">  title: <span class="string">'ES6 Template Strings'</span>,</span><br><span class="line">  date: <span class="built_in">Date</span>.now(),</span><br><span class="line">  tags: [</span><br><span class="line">    <span class="string">'ES6'</span>, <span class="string">'template strings'</span></span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;title, tags&#125; = post;</span><br><span class="line"><span class="keyword">var</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;h1&gt;<span class="subst">$&#123;title&#125;</span>&lt;/h1&gt;</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;tags.map(tag=&gt;<span class="string">`&lt;li&gt;<span class="subst">$&#123;tag&#125;</span>&lt;/li&gt;`</span>).join(<span class="string">'\n'</span>)&#125;</span></span></span><br><span class="line"><span class="string">&lt;/ul&gt;`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template);</span><br></pre></td></tr></table></figure></p>
+<p>Как видно, внутри ${} действительно выражения, и более того, они могут внутри себя содержать другие шаблонные строки, которые в свою очередь могут содержать другие выражения.</p>
+<h2 id="String-raw"><a href="#String-raw" class="headerlink" title="String.raw"></a>String.raw</h2><p>Как видно из названия, статический метод <strong><em>String.raw</em></strong> нужен для получения необработанных строк внутри шаблона. Например:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`one\ntwo`</span>);</span><br><span class="line"><span class="comment">//one</span></span><br><span class="line"><span class="comment">//two</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>.raw<span class="string">`one\ntwo`</span>);</span><br><span class="line"><span class="comment">//one\ntwo</span></span><br></pre></td></tr></table></figure></p>
+<p>Важно понимать, что ${выражения} внутри шаблонных строк все равно будут вычислены:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>.raw<span class="string">`One + two\nis <span class="subst">$&#123;<span class="number">1</span>+<span class="number">2</span>&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//One + two\nis 3</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Русский/">Русский</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ES2015-ES6/">ES2015/ES6</a>, <a href="/tags/Template-strings/">Template strings</a>, <a href="/tags/Шаблонные-строки/">Шаблонные строки</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Комментарии</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=907270236144918";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://blog.makushev.com/2015/12/24/es6-template-strings/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Поиск">
+    <input type="hidden" name="q" value="site:blog.makushev.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Категории</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/English/">English</a><small>2</small></li>
+  
+    <li><a href="/categories/Русский/">Русский</a><small>16</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Метки</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Destructuring/">Destructuring</a><small>1</small></li>
+  
+    <li><a href="/tags/Dispatcher/">Dispatcher</a><small>2</small></li>
+  
+    <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
+  
+    <li><a href="/tags/IE/">IE</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
+  
+    <li><a href="/tags/Mediator/">Mediator</a><small>2</small></li>
+  
+    <li><a href="/tags/Object-create/">Object.create</a><small>1</small></li>
+  
+    <li><a href="/tags/Observer/">Observer</a><small>1</small></li>
+  
+    <li><a href="/tags/Pub-Sub/">Pub/Sub</a><small>1</small></li>
+  
+    <li><a href="/tags/Template-strings/">Template strings</a><small>1</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
+  
+    <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
+  
+    <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/bug/">bug</a><small>2</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>1</small></li>
+  
+    <li><a href="/tags/digitalocean/">digitalocean</a><small>2</small></li>
+  
+    <li><a href="/tags/event-driven/">event-driven</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/google-chrome/">google chrome</a><small>2</small></li>
+  
+    <li><a href="/tags/gpu/">gpu</a><small>2</small></li>
+  
+    <li><a href="/tags/issue/">issue</a><small>2</small></li>
+  
+    <li><a href="/tags/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/tags/link/">link</a><small>2</small></li>
+  
+    <li><a href="/tags/log/">log</a><small>2</small></li>
+  
+    <li><a href="/tags/momondo/">momondo</a><small>1</small></li>
+  
+    <li><a href="/tags/node-js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/non-blocking-I-O/">non-blocking I/O</a><small>1</small></li>
+  
+    <li><a href="/tags/prototype/">prototype</a><small>1</small></li>
+  
+    <li><a href="/tags/referral/">referral</a><small>2</small></li>
+  
+    <li><a href="/tags/w3c/">w3c</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>2</small></li>
+  
+    <li><a href="/tags/Деструктуризация/">Деструктуризация</a><small>1</small></li>
+  
+    <li><a href="/tags/Наследование/">Наследование</a><small>1</small></li>
+  
+    <li><a href="/tags/Паттерны/">Паттерны</a><small>5</small></li>
+  
+    <li><a href="/tags/Шаблонные-строки/">Шаблонные строки</a><small>1</small></li>
+  
+    <li><a href="/tags/авиабилеты/">авиабилеты</a><small>1</small></li>
+  
+    <li><a href="/tags/исследование/">исследование</a><small>1</small></li>
+  
+    <li><a href="/tags/литература/">литература</a><small>2</small></li>
+  
+    <li><a href="/tags/обучение/">обучение</a><small>1</small></li>
+  
+    <li><a href="/tags/саморазвитие/">саморазвитие</a><small>1</small></li>
+  
+    <li><a href="/tags/сила-воли/">сила воли</a><small>1</small></li>
+  
+    <li><a href="/tags/стрелочные-функции/">стрелочные функции</a><small>1</small></li>
+  
+    <li><a href="/tags/экономия/">экономия</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Владимир Макушев
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30607982 = new Ya.Metrika({id:30607982,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30607982" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
