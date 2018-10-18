@@ -3,9 +3,9 @@
   <title><![CDATA[Владимир Макушев. Блог.]]></title>
   <subtitle><![CDATA[Простыми словами о фронтенде, айти и жизни.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://blog.makushev.com/"/>
-  <updated>2018-03-20T03:51:34.994Z</updated>
-  <id>http://blog.makushev.com/</id>
+  <link href="http://makushev.com/"/>
+  <updated>2018-10-18T01:43:32.876Z</updated>
+  <id>http://makushev.com/</id>
   
   <author>
     <name><![CDATA[Владимир Макушев]]></name>
@@ -15,32 +15,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Digitalocean referral link]]></title>
-    <link href="http://blog.makushev.com/2016/01/05/digitalocean-referral-link-eng/"/>
-    <id>http://blog.makushev.com/2016/01/05/digitalocean-referral-link-eng/</id>
-    <published>2016-01-05T10:00:53.000Z</published>
-    <updated>2018-03-20T03:51:34.994Z</updated>
-    <content type="html"><![CDATA[<p>If you want to get $10 to your Digitalocean account, please use my referral link: <a href="http://www.digitalocean.com/?refcode=5f75c3f0a286" target="_blank" rel="noopener">Digitalocean referral link</a><br><a id="more"></a></p>
+    <title><![CDATA[I'm back!]]></title>
+    <link href="http://makushev.com/2018/10/17/im-back/"/>
+    <id>http://makushev.com/2018/10/17/im-back/</id>
+    <published>2018-10-17T15:31:42.000Z</published>
+    <updated>2018-10-18T01:43:32.876Z</updated>
+    <content type="html"><![CDATA[<p>Hi everyone. I’ve finally back. I had some issues regarding recovering of this blog and I decided to move this blog to my <a href="//makushev.com">general domain</a> and removed all out-of-date stuff. So, let’s proceed. I’ve got a lot to write about :) Stay tuned.</p>
+<p>P.S. Actually, this is just a test for checking that everything is still working :)<br><a id="more"></a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>If you want to get $10 to your Digitalocean account, please use my referral link: <a href="http://www.digitalocean.com/?refcode=5f75c3f0a286" target="_blank" rel="noopener">Digitalocean referral link</a><br>]]>
+    <![CDATA[<p>Hi everyone. I’ve finally back. I had some issues regarding recovering of this blog and I decided to move this blog to my <a href="//makushev.com">general domain</a> and removed all out-of-date stuff. So, let’s proceed. I’ve got a lot to write about :) Stay tuned.</p>
+<p>P.S. Actually, this is just a test for checking that everything is still working :)<br>]]>
     
     </summary>
     
-      <category term="digitalocean" scheme="http://blog.makushev.com/tags/digitalocean/"/>
+      <category term="personal, news" scheme="http://makushev.com/tags/personal-news/"/>
     
-      <category term="referral" scheme="http://blog.makushev.com/tags/referral/"/>
-    
-      <category term="link" scheme="http://blog.makushev.com/tags/link/"/>
-    
-      <category term="English" scheme="http://blog.makushev.com/categories/English/"/>
+      <category term="English" scheme="http://makushev.com/categories/English/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Реферальная ссылка на Digitalocean]]></title>
-    <link href="http://blog.makushev.com/2016/01/05/digitalocean-referral-link/"/>
-    <id>http://blog.makushev.com/2016/01/05/digitalocean-referral-link/</id>
+    <link href="http://makushev.com/2016/01/05/digitalocean-referral-link/"/>
+    <id>http://makushev.com/2016/01/05/digitalocean-referral-link/</id>
     <published>2016-01-05T10:00:53.000Z</published>
     <updated>2018-03-20T03:51:34.995Z</updated>
     <content type="html"><![CDATA[<p>Если вдруг кому-то нужны $10 на Digitalocean, то можете смело использовать мою реферальную ссылку: <a href="http://www.digitalocean.com/?refcode=5f75c3f0a286" target="_blank" rel="noopener">Digitalocean referral link</a><br><a id="more"></a></p>
@@ -50,20 +48,43 @@
     
     </summary>
     
-      <category term="digitalocean" scheme="http://blog.makushev.com/tags/digitalocean/"/>
+      <category term="digitalocean" scheme="http://makushev.com/tags/digitalocean/"/>
     
-      <category term="referral" scheme="http://blog.makushev.com/tags/referral/"/>
+      <category term="referral" scheme="http://makushev.com/tags/referral/"/>
     
-      <category term="link" scheme="http://blog.makushev.com/tags/link/"/>
+      <category term="link" scheme="http://makushev.com/tags/link/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Digitalocean referral link]]></title>
+    <link href="http://makushev.com/2016/01/05/digitalocean-referral-link-eng/"/>
+    <id>http://makushev.com/2016/01/05/digitalocean-referral-link-eng/</id>
+    <published>2016-01-05T10:00:53.000Z</published>
+    <updated>2018-03-20T03:51:34.994Z</updated>
+    <content type="html"><![CDATA[<p>If you want to get $10 to your Digitalocean account, please use my referral link: <a href="http://www.digitalocean.com/?refcode=5f75c3f0a286" target="_blank" rel="noopener">Digitalocean referral link</a><br><a id="more"></a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>If you want to get $10 to your Digitalocean account, please use my referral link: <a href="http://www.digitalocean.com/?refcode=5f75c3f0a286" target="_blank" rel="noopener">Digitalocean referral link</a><br>]]>
+    
+    </summary>
+    
+      <category term="digitalocean" scheme="http://makushev.com/tags/digitalocean/"/>
+    
+      <category term="referral" scheme="http://makushev.com/tags/referral/"/>
+    
+      <category term="link" scheme="http://makushev.com/tags/link/"/>
+    
+      <category term="English" scheme="http://makushev.com/categories/English/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Стрелочные функции]]></title>
-    <link href="http://blog.makushev.com/2015/12/29/es6-arrow-functions/"/>
-    <id>http://blog.makushev.com/2015/12/29/es6-arrow-functions/</id>
+    <link href="http://makushev.com/2015/12/29/es6-arrow-functions/"/>
+    <id>http://makushev.com/2015/12/29/es6-arrow-functions/</id>
     <published>2015-12-29T15:15:28.000Z</published>
     <updated>2018-03-20T03:51:34.996Z</updated>
     <content type="html"><![CDATA[<p>Лично я со стрелочными функциями познакомился лет так наверное 5-7 назад, когда был программистом ASP.NET и писал на C#. Затем, я решил полностью погрузиться в javascript, но стрелочные функции, скорее к счастью, пришли и сюда. Я люблю стрелочные функции и уверен вы их полюбите тоже.<br><a id="more"></a></p>
@@ -85,20 +106,20 @@
     
     </summary>
     
-      <category term="ES2015/ES6" scheme="http://blog.makushev.com/tags/ES2015-ES6/"/>
+      <category term="ES2015/ES6" scheme="http://makushev.com/tags/ES2015-ES6/"/>
     
-      <category term="arrow functions" scheme="http://blog.makushev.com/tags/arrow-functions/"/>
+      <category term="arrow functions" scheme="http://makushev.com/tags/arrow-functions/"/>
     
-      <category term="стрелочные функции" scheme="http://blog.makushev.com/tags/%D1%81%D1%82%D1%80%D0%B5%D0%BB%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8/"/>
+      <category term="стрелочные функции" scheme="http://makushev.com/tags/%D1%81%D1%82%D1%80%D0%B5%D0%BB%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Шаблонные строки]]></title>
-    <link href="http://blog.makushev.com/2015/12/24/es6-template-strings/"/>
-    <id>http://blog.makushev.com/2015/12/24/es6-template-strings/</id>
+    <link href="http://makushev.com/2015/12/24/es6-template-strings/"/>
+    <id>http://makushev.com/2015/12/24/es6-template-strings/</id>
     <published>2015-12-24T08:52:40.000Z</published>
     <updated>2018-03-20T03:51:34.997Z</updated>
     <content type="html"><![CDATA[<p>Не знаю как правильно перевести <strong><em>template strings</em></strong> на русский язык, но мне кажется термин <strong><em>шаблонные строки</em></strong> будет наиболее близок к сути. Новая фича ES2015, судя по комментам в интернете, вызвала противоположные отзывы. Кто-то в восторге и кричит “Наконец-то”, кто-то консервативно бубнит “и так было нормально. В чем бенефит?”. Ну а мы давайте разберемся в чем собственно суть?<br><a id="more"></a></p>
@@ -119,20 +140,20 @@
     
     </summary>
     
-      <category term="ES2015/ES6" scheme="http://blog.makushev.com/tags/ES2015-ES6/"/>
+      <category term="ES2015/ES6" scheme="http://makushev.com/tags/ES2015-ES6/"/>
     
-      <category term="Template strings" scheme="http://blog.makushev.com/tags/Template-strings/"/>
+      <category term="Template strings" scheme="http://makushev.com/tags/Template-strings/"/>
     
-      <category term="Шаблонные строки" scheme="http://blog.makushev.com/tags/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8/"/>
+      <category term="Шаблонные строки" scheme="http://makushev.com/tags/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Destructuring в Javascript.]]></title>
-    <link href="http://blog.makushev.com/2015/12/21/es6-destructuring/"/>
-    <id>http://blog.makushev.com/2015/12/21/es6-destructuring/</id>
+    <link href="http://makushev.com/2015/12/21/es6-destructuring/"/>
+    <id>http://makushev.com/2015/12/21/es6-destructuring/</id>
     <published>2015-12-21T15:34:37.000Z</published>
     <updated>2018-03-20T03:51:34.996Z</updated>
     <content type="html"><![CDATA[<p>Деструктуризация или разбиение на элементы - новая возможность в языке Javascript (ES2015/ES6), которая позволяет извлекать данные из массивов и объектов, используя синтаксис объявления массивов и литералов объектов соответственно.<br><a id="more"></a></p>
@@ -153,20 +174,20 @@
     
     </summary>
     
-      <category term="ES2015/ES6" scheme="http://blog.makushev.com/tags/ES2015-ES6/"/>
+      <category term="ES2015/ES6" scheme="http://makushev.com/tags/ES2015-ES6/"/>
     
-      <category term="Destructuring" scheme="http://blog.makushev.com/tags/Destructuring/"/>
+      <category term="Destructuring" scheme="http://makushev.com/tags/Destructuring/"/>
     
-      <category term="Деструктуризация" scheme="http://blog.makushev.com/tags/%D0%94%D0%B5%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/"/>
+      <category term="Деструктуризация" scheme="http://makushev.com/tags/%D0%94%D0%B5%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[GPU and Canvas bug in Google Chrome (Windows)]]></title>
-    <link href="http://blog.makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows-eng/"/>
-    <id>http://blog.makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows-eng/</id>
+    <link href="http://makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows-eng/"/>
+    <id>http://makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows-eng/</id>
     <published>2015-12-02T13:16:28.000Z</published>
     <updated>2018-03-20T03:51:34.998Z</updated>
     <content type="html"><![CDATA[<p>Today I was working on unusual and hence interesting task. The team manager reported about strange “Aw’ Snap!” Google Chrome message on a particular page. Have to say, that page has a gallery, map and Google Street View. I couldn’t reproduce this bug on my machine, and now I’m going to describe what we did to handle this issue.<br><a id="more"></a><br>First we made a plan to reproduce this bug and get “Aw’ snap!” message. All you need to do is open the page and refresh it (or come back to this page later). That’s all, Chrome’s tab dies instantly.</p>
@@ -185,28 +206,28 @@
     
     </summary>
     
-      <category term="google chrome" scheme="http://blog.makushev.com/tags/google-chrome/"/>
+      <category term="google chrome" scheme="http://makushev.com/tags/google-chrome/"/>
     
-      <category term="bug" scheme="http://blog.makushev.com/tags/bug/"/>
+      <category term="bug" scheme="http://makushev.com/tags/bug/"/>
     
-      <category term="issue" scheme="http://blog.makushev.com/tags/issue/"/>
+      <category term="issue" scheme="http://makushev.com/tags/issue/"/>
     
-      <category term="gpu" scheme="http://blog.makushev.com/tags/gpu/"/>
+      <category term="gpu" scheme="http://makushev.com/tags/gpu/"/>
     
-      <category term="canvas" scheme="http://blog.makushev.com/tags/canvas/"/>
+      <category term="canvas" scheme="http://makushev.com/tags/canvas/"/>
     
-      <category term="windows" scheme="http://blog.makushev.com/tags/windows/"/>
+      <category term="windows" scheme="http://makushev.com/tags/windows/"/>
     
-      <category term="log" scheme="http://blog.makushev.com/tags/log/"/>
+      <category term="log" scheme="http://makushev.com/tags/log/"/>
     
-      <category term="English" scheme="http://blog.makushev.com/categories/English/"/>
+      <category term="English" scheme="http://makushev.com/categories/English/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Баг с GPU и Canvas в Google Chrome под Windows]]></title>
-    <link href="http://blog.makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows/"/>
-    <id>http://blog.makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows/</id>
+    <link href="http://makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows/"/>
+    <id>http://makushev.com/2015/12/02/gpu-canvas-bug-google-chrome-windows/</id>
     <published>2015-12-02T12:26:58.000Z</published>
     <updated>2018-03-20T03:51:34.999Z</updated>
     <content type="html"><![CDATA[<p>Сегодня работал над необычной и от того интересной задачей. Выяснилось, что у наших менеджеров на определенной странице постоянно возникает сообщение “Опаньки” в Google Chrome. Скажу сразу, страница эта весьма насыщенная, в том числе фотогалереей, картой и панорамой Street View. У меня никак не получалось воспроизвести данный баг, и я собираюсь рассказать о том что было сделано для того, чтобы найти и обезвредить его.<br><a id="more"></a><br>Первым делом мы выяснили как и в какой последовательности нужно было действовать, чтобы получить то самое “Опаньки”. А для этого нужно было зайти на нашу страницу, и затем обновить ее (либо вернуться на нее позже). Все, открытый таб Chrome под Windows моментально умирал. </p>
@@ -227,28 +248,28 @@
     
     </summary>
     
-      <category term="google chrome" scheme="http://blog.makushev.com/tags/google-chrome/"/>
+      <category term="google chrome" scheme="http://makushev.com/tags/google-chrome/"/>
     
-      <category term="bug" scheme="http://blog.makushev.com/tags/bug/"/>
+      <category term="bug" scheme="http://makushev.com/tags/bug/"/>
     
-      <category term="issue" scheme="http://blog.makushev.com/tags/issue/"/>
+      <category term="issue" scheme="http://makushev.com/tags/issue/"/>
     
-      <category term="gpu" scheme="http://blog.makushev.com/tags/gpu/"/>
+      <category term="gpu" scheme="http://makushev.com/tags/gpu/"/>
     
-      <category term="canvas" scheme="http://blog.makushev.com/tags/canvas/"/>
+      <category term="canvas" scheme="http://makushev.com/tags/canvas/"/>
     
-      <category term="windows" scheme="http://blog.makushev.com/tags/windows/"/>
+      <category term="windows" scheme="http://makushev.com/tags/windows/"/>
     
-      <category term="log" scheme="http://blog.makushev.com/tags/log/"/>
+      <category term="log" scheme="http://makushev.com/tags/log/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Как понимать event-driven, blocking и non-blocking I/O]]></title>
-    <link href="http://blog.makushev.com/2015/11/18/how-to-understand-event-driven-programming/"/>
-    <id>http://blog.makushev.com/2015/11/18/how-to-understand-event-driven-programming/</id>
+    <link href="http://makushev.com/2015/11/18/how-to-understand-event-driven-programming/"/>
+    <id>http://makushev.com/2015/11/18/how-to-understand-event-driven-programming/</id>
     <published>2015-11-18T10:27:21.000Z</published>
     <updated>2018-03-20T03:51:35.000Z</updated>
     <content type="html"><![CDATA[<p>Когда <strong>Node.js</strong> только появился, появилось множество статей о том как же он хорош в мире Highload (к слову и не только в этом мире). Как же он быстро умеет обрабатывать входящие запросы. И как правило всегда все доводы сводились к тому, что <strong>Node.js</strong> использует <strong>event-driven</strong> подход. Это запомнили все, но как выяснилось понимают не все. Давайте разбираться.<br><a id="more"></a></p>
@@ -268,24 +289,24 @@
     
     </summary>
     
-      <category term="node.js" scheme="http://blog.makushev.com/tags/node-js/"/>
+      <category term="node.js" scheme="http://makushev.com/tags/node-js/"/>
     
-      <category term="event-driven" scheme="http://blog.makushev.com/tags/event-driven/"/>
+      <category term="event-driven" scheme="http://makushev.com/tags/event-driven/"/>
     
-      <category term="javascript" scheme="http://blog.makushev.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://makushev.com/tags/javascript/"/>
     
-      <category term="blocking I/O" scheme="http://blog.makushev.com/tags/blocking-I-O/"/>
+      <category term="blocking I/O" scheme="http://makushev.com/tags/blocking-I-O/"/>
     
-      <category term="non-blocking I/O" scheme="http://blog.makushev.com/tags/non-blocking-I-O/"/>
+      <category term="non-blocking I/O" scheme="http://makushev.com/tags/non-blocking-I-O/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Как искать дешевые авиабилеты]]></title>
-    <link href="http://blog.makushev.com/2015/11/15/how-to-find-cheap-flights/"/>
-    <id>http://blog.makushev.com/2015/11/15/how-to-find-cheap-flights/</id>
+    <link href="http://makushev.com/2015/11/15/how-to-find-cheap-flights/"/>
+    <id>http://makushev.com/2015/11/15/how-to-find-cheap-flights/</id>
     <published>2015-11-15T10:02:41.000Z</published>
     <updated>2018-03-20T03:51:35.000Z</updated>
     <content type="html"><![CDATA[<p>Разбирал почтовый ящик и закладки, которые сделал в течение последнего месяца и наткнулся на отличное исследования от <a href="http://www.momondo.ru/" target="_blank" rel="noopener">momondo</a> на тему авиабилетов.<br><a id="more"></a></p>
@@ -310,22 +331,22 @@
     
     </summary>
     
-      <category term="авиабилеты" scheme="http://blog.makushev.com/tags/%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B8%D0%BB%D0%B5%D1%82%D1%8B/"/>
+      <category term="авиабилеты" scheme="http://makushev.com/tags/%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B8%D0%BB%D0%B5%D1%82%D1%8B/"/>
     
-      <category term="экономия" scheme="http://blog.makushev.com/tags/%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%8F/"/>
+      <category term="экономия" scheme="http://makushev.com/tags/%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%8F/"/>
     
-      <category term="momondo" scheme="http://blog.makushev.com/tags/momondo/"/>
+      <category term="momondo" scheme="http://makushev.com/tags/momondo/"/>
     
-      <category term="исследование" scheme="http://blog.makushev.com/tags/%D0%B8%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/"/>
+      <category term="исследование" scheme="http://makushev.com/tags/%D0%B8%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Книга "Сила воли. Как развить и укрепить"]]></title>
-    <link href="http://blog.makushev.com/2015/09/07/book-willpower-by-kelly-mcgonigal/"/>
-    <id>http://blog.makushev.com/2015/09/07/book-willpower-by-kelly-mcgonigal/</id>
+    <link href="http://makushev.com/2015/09/07/book-willpower-by-kelly-mcgonigal/"/>
+    <id>http://makushev.com/2015/09/07/book-willpower-by-kelly-mcgonigal/</id>
     <published>2015-09-07T09:16:32.000Z</published>
     <updated>2018-03-20T03:51:34.993Z</updated>
     <content type="html"><![CDATA[<p>Закончил чтение книги Келли Макгонигал <a href="http://www.litres.ru/kelli-makgonigal/sila-voli-kak-razvit-i-ukrepit-3/" target="_blank" rel="noopener">Сила воли. Как развить и укрепить</a>. Ниже приведу свои мысли по этому поводу.<br><a id="more"></a><br>На самом деле, я прочел не всю книгу, а лишь ознакомительный фрагмент длинною в 3 главы. После этого я посмотрел на полную версию книги, прочел оглавление и долго рассуждал стоит ли покупать полную версию. Купил.</p>
@@ -338,20 +359,20 @@
     
     </summary>
     
-      <category term="сила воли" scheme="http://blog.makushev.com/tags/%D1%81%D0%B8%D0%BB%D0%B0-%D0%B2%D0%BE%D0%BB%D0%B8/"/>
+      <category term="сила воли" scheme="http://makushev.com/tags/%D1%81%D0%B8%D0%BB%D0%B0-%D0%B2%D0%BE%D0%BB%D0%B8/"/>
     
-      <category term="литература" scheme="http://blog.makushev.com/tags/%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0/"/>
+      <category term="литература" scheme="http://makushev.com/tags/%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0/"/>
     
-      <category term="саморазвитие" scheme="http://blog.makushev.com/tags/%D1%81%D0%B0%D0%BC%D0%BE%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5/"/>
+      <category term="саморазвитие" scheme="http://makushev.com/tags/%D1%81%D0%B0%D0%BC%D0%BE%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Наследование в Javascript]]></title>
-    <link href="http://blog.makushev.com/2015/08/29/javascript-inheritance/"/>
-    <id>http://blog.makushev.com/2015/08/29/javascript-inheritance/</id>
+    <link href="http://makushev.com/2015/08/29/javascript-inheritance/"/>
+    <id>http://makushev.com/2015/08/29/javascript-inheritance/</id>
     <published>2015-08-29T10:24:42.000Z</published>
     <updated>2018-03-20T03:51:35.002Z</updated>
     <content type="html"><![CDATA[<p>В данной статье мы будем разбираться в наследовании в Javascript. Мы должны понять что такое prototype, __proto__, Object.create, constructor.<br><a id="more"></a></p>
@@ -405,22 +426,22 @@
     
     </summary>
     
-      <category term="Паттерны" scheme="http://blog.makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
+      <category term="Паттерны" scheme="http://makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
     
-      <category term="Наследование" scheme="http://blog.makushev.com/tags/%D0%9D%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/"/>
+      <category term="Наследование" scheme="http://makushev.com/tags/%D0%9D%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/"/>
     
-      <category term="prototype" scheme="http://blog.makushev.com/tags/prototype/"/>
+      <category term="prototype" scheme="http://makushev.com/tags/prototype/"/>
     
-      <category term="Object.create" scheme="http://blog.makushev.com/tags/Object-create/"/>
+      <category term="Object.create" scheme="http://makushev.com/tags/Object-create/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Паттерн Фасад]]></title>
-    <link href="http://blog.makushev.com/2015/08/29/facade-javascript-oop-pattern/"/>
-    <id>http://blog.makushev.com/2015/08/29/facade-javascript-oop-pattern/</id>
+    <link href="http://makushev.com/2015/08/29/facade-javascript-oop-pattern/"/>
+    <id>http://makushev.com/2015/08/29/facade-javascript-oop-pattern/</id>
     <published>2015-08-29T07:39:05.000Z</published>
     <updated>2018-03-20T03:51:34.997Z</updated>
     <content type="html"><![CDATA[<p>Паттерн Фасад, на мой взгляд, является одним из самых простых и распространенных паттернов при разработке. Многие разработчики пользуются им и даже не подозревая, что техника, которую они используют называется Фасад.<br><a id="more"></a></p>
@@ -438,20 +459,20 @@
     
     </summary>
     
-      <category term="Паттерны" scheme="http://blog.makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
+      <category term="Паттерны" scheme="http://makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
     
-      <category term="Mediator" scheme="http://blog.makushev.com/tags/Mediator/"/>
+      <category term="Mediator" scheme="http://makushev.com/tags/Mediator/"/>
     
-      <category term="Dispatcher" scheme="http://blog.makushev.com/tags/Dispatcher/"/>
+      <category term="Dispatcher" scheme="http://makushev.com/tags/Dispatcher/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Паттерн Mediator (Dispatcher)]]></title>
-    <link href="http://blog.makushev.com/2015/08/04/mediator-dispatcher-oop-pattern/"/>
-    <id>http://blog.makushev.com/2015/08/04/mediator-dispatcher-oop-pattern/</id>
+    <link href="http://makushev.com/2015/08/04/mediator-dispatcher-oop-pattern/"/>
+    <id>http://makushev.com/2015/08/04/mediator-dispatcher-oop-pattern/</id>
     <published>2015-08-04T18:06:49.000Z</published>
     <updated>2018-03-20T03:51:35.004Z</updated>
     <content type="html"><![CDATA[<p>Теперь настало время разобрать что же такое Mediator. Его отличие, а также преимущества относительно Observer’а я рассмотрю в отдельной сравнительной статье. Но на самом деле, мне кажется многие догадаются об этом и сами, когда появится ясность и понимание данного паттерна.<br><a id="more"></a></p>
@@ -481,20 +502,20 @@
     
     </summary>
     
-      <category term="Паттерны" scheme="http://blog.makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
+      <category term="Паттерны" scheme="http://makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
     
-      <category term="Mediator" scheme="http://blog.makushev.com/tags/Mediator/"/>
+      <category term="Mediator" scheme="http://makushev.com/tags/Mediator/"/>
     
-      <category term="Dispatcher" scheme="http://blog.makushev.com/tags/Dispatcher/"/>
+      <category term="Dispatcher" scheme="http://makushev.com/tags/Dispatcher/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Паттерн Observer и Pub/Sub]]></title>
-    <link href="http://blog.makushev.com/2015/08/03/observer-pub-sub-oop-pattern/"/>
-    <id>http://blog.makushev.com/2015/08/03/observer-pub-sub-oop-pattern/</id>
+    <link href="http://makushev.com/2015/08/03/observer-pub-sub-oop-pattern/"/>
+    <id>http://makushev.com/2015/08/03/observer-pub-sub-oop-pattern/</id>
     <published>2015-08-03T17:42:48.000Z</published>
     <updated>2018-03-20T03:51:35.004Z</updated>
     <content type="html"><![CDATA[<p>Не случайно я хочу рассмотреть этот паттерн в первую очередь. Во-первых его назначение абсолютно понятно, и любой javascript-разработчик возможно даже не подозревает как часто он его использует.<br><a id="more"></a></p>
@@ -528,20 +549,20 @@
     
     </summary>
     
-      <category term="Паттерны" scheme="http://blog.makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
+      <category term="Паттерны" scheme="http://makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
     
-      <category term="Observer" scheme="http://blog.makushev.com/tags/Observer/"/>
+      <category term="Observer" scheme="http://makushev.com/tags/Observer/"/>
     
-      <category term="Pub/Sub" scheme="http://blog.makushev.com/tags/Pub-Sub/"/>
+      <category term="Pub/Sub" scheme="http://makushev.com/tags/Pub-Sub/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[ООП Паттерны в Javascript]]></title>
-    <link href="http://blog.makushev.com/2015/08/03/javascript-OOP-patterns/"/>
-    <id>http://blog.makushev.com/2015/08/03/javascript-OOP-patterns/</id>
+    <link href="http://makushev.com/2015/08/03/javascript-OOP-patterns/"/>
+    <id>http://makushev.com/2015/08/03/javascript-OOP-patterns/</id>
     <published>2015-08-03T17:08:41.000Z</published>
     <updated>2018-03-20T03:51:35.001Z</updated>
     <content type="html"><![CDATA[<h2 id="Введение"><a href="#Введение" class="headerlink" title="Введение"></a>Введение</h2><p>Этой статьей я хочу начать целый цикл статей о паттернах, которые широко применяются в мире разработки больших приложений. Абсолютно не важно десктопное ли это приложение, или это веб-приложение; написанно оно на .NET, PHP или вовсе на Javascript. Главное понимать, что паттерны проектирования - это своего рода обобщенные решения типичных задач, который рано или поздно возникают при росте любого приложения.</p>
@@ -562,16 +583,16 @@
     
     </summary>
     
-      <category term="Паттерны" scheme="http://blog.makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
+      <category term="Паттерны" scheme="http://makushev.com/tags/%D0%9F%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Приоритеты CSS-селекторов]]></title>
-    <link href="http://blog.makushev.com/2015/07/28/css-selectors-specifity/"/>
-    <id>http://blog.makushev.com/2015/07/28/css-selectors-specifity/</id>
+    <link href="http://makushev.com/2015/07/28/css-selectors-specifity/"/>
+    <id>http://makushev.com/2015/07/28/css-selectors-specifity/</id>
     <published>2015-07-28T16:10:54.000Z</published>
     <updated>2018-03-20T03:51:34.994Z</updated>
     <content type="html"><![CDATA[<p>Часто на собеседованиях на позицию фронтенд-разработчика или верстальщика любят давать задачки, где нужно определить как будет выглядеть тот или иной html-элемент, после применения сложных CSS селекторов. У опытных разработчиков, как правило, включается интуиция, основанная на собственных решениях и задачах. У начинающих и вовсе возникает ступор при виде сложных конструкций. </p>
@@ -596,18 +617,18 @@
     
     </summary>
     
-      <category term="css" scheme="http://blog.makushev.com/tags/css/"/>
+      <category term="css" scheme="http://makushev.com/tags/css/"/>
     
-      <category term="w3c" scheme="http://blog.makushev.com/tags/w3c/"/>
+      <category term="w3c" scheme="http://makushev.com/tags/w3c/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Виртуалки IE под Mac]]></title>
-    <link href="http://blog.makushev.com/2015/05/24/ie-mac-testing/"/>
-    <id>http://blog.makushev.com/2015/05/24/ie-mac-testing/</id>
+    <link href="http://makushev.com/2015/05/24/ie-mac-testing/"/>
+    <id>http://makushev.com/2015/05/24/ie-mac-testing/</id>
     <published>2015-05-25T05:42:46.000Z</published>
     <updated>2018-03-20T03:51:35.001Z</updated>
     <content type="html"><![CDATA[<p>Если вы ведете разработку своего веб-проекта под Mac, то у вас рано или поздно возникнет необходимость запуска и проверки проекта в браузерах Internet Explorer. Единственным нормальным и правильным способом является использование виртуальных машин. Этот способ лучше всякого рода эмуляторов/имитаторов (в том числе онлайн). Дело в том, что с помощью виртуальной машины вы можете полностью воссоздать экосистему, в которой работает браузер.</p>
@@ -629,20 +650,20 @@
     
     </summary>
     
-      <category term="IE" scheme="http://blog.makushev.com/tags/IE/"/>
+      <category term="IE" scheme="http://makushev.com/tags/IE/"/>
     
-      <category term="Mac" scheme="http://blog.makushev.com/tags/Mac/"/>
+      <category term="Mac" scheme="http://makushev.com/tags/Mac/"/>
     
-      <category term="VirtualBox" scheme="http://blog.makushev.com/tags/VirtualBox/"/>
+      <category term="VirtualBox" scheme="http://makushev.com/tags/VirtualBox/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Книга Git Pro]]></title>
-    <link href="http://blog.makushev.com/2015/05/24/git-pro-book/"/>
-    <id>http://blog.makushev.com/2015/05/24/git-pro-book/</id>
+    <link href="http://makushev.com/2015/05/24/git-pro-book/"/>
+    <id>http://makushev.com/2015/05/24/git-pro-book/</id>
     <published>2015-05-24T10:09:28.000Z</published>
     <updated>2018-03-20T03:51:34.998Z</updated>
     <content type="html"><![CDATA[<p>Я работаю с git уже почти два года. Острой необходимости в глубоком его изучении у меня не было, однако, я решил, что мне для дальнейшего развития не хватает только поверхностных знаний, поэтому решил углубиться в изучение этой системы контроля версий, чтобы чувствовать себя уверенно в ежедневной работе.</p>
@@ -662,20 +683,20 @@
     
     </summary>
     
-      <category term="литература" scheme="http://blog.makushev.com/tags/%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0/"/>
+      <category term="литература" scheme="http://makushev.com/tags/%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0/"/>
     
-      <category term="git" scheme="http://blog.makushev.com/tags/git/"/>
+      <category term="git" scheme="http://makushev.com/tags/git/"/>
     
-      <category term="обучение" scheme="http://blog.makushev.com/tags/%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/"/>
+      <category term="обучение" scheme="http://makushev.com/tags/%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/"/>
     
-      <category term="Русский" scheme="http://blog.makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
+      <category term="Русский" scheme="http://makushev.com/categories/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Начало продолжения]]></title>
-    <link href="http://blog.makushev.com/2015/05/19/lets-begin/"/>
-    <id>http://blog.makushev.com/2015/05/19/lets-begin/</id>
+    <link href="http://makushev.com/2015/05/19/lets-begin/"/>
+    <id>http://makushev.com/2015/05/19/lets-begin/</id>
     <published>2015-05-19T18:05:52.000Z</published>
     <updated>2018-03-20T03:51:35.003Z</updated>
     <content type="html"><![CDATA[<p>Это далеко не первый пост в моей жизни :) Ранее я вел блог на ЖЖ, и он был больше про мою жизнь и мои мысли на разные темы. Время идет, интересы и взгляды меняются, и я решил возобновить практику изложения мыслей в блог. </p>
