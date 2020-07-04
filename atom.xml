@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://makushev.com/"/>
-  <updated>2018-10-18T01:43:32.876Z</updated>
+  <updated>2020-07-04T03:16:44.510Z</updated>
   <id>http://makushev.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Outrun Timer App</title>
+    <link href="http://makushev.com/2020/07/03/outrun-timer-pwa/"/>
+    <id>http://makushev.com/2020/07/03/outrun-timer-pwa/</id>
+    <published>2020-07-03T15:13:14.000Z</published>
+    <updated>2020-07-04T03:16:44.510Z</updated>
+    
+    <content type="html"><![CDATA[<p>I understand there are so many beautiful timers across the WEB tailored for plenty of specific needs.</p><p>One of the reasons why I like my profession is that I can create everything I want in the way I want it to look and behave.</p><p>So let me introduce to you my <a href="https://timer.makushev.com/" target="_blank" rel="noopener">Outrun Timer</a> app:</p><ul><li>it works both online and offline</li><li>adapts to device screen size (phone, tablet, desktop)</li><li>might be added to your home screen as a standalone App. </li></ul><p>Read more about my motivation, technical details and insights.</p><a id="more"></a><h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>To be honest, the main idea of ​​creating this timer was to play around technologies which are out of my daily routine, but interesting for me.</p><p>So I set up the next goals for myself:</p><ul><li>Write SPA with Vue.js ecosystem (Vue router, Vuex)</li><li>Turn it into Progressive Web Application</li><li>Use AudioContext API</li><li>Make it works offline</li><li>Get as much Lighthouse rating as possible for both Mobile/Desktop devices</li><li>Get new experience </li><li>Have fun</li></ul><h2 id="Insights"><a href="#Insights" class="headerlink" title="Insights"></a>Insights</h2><h3 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h3><p>In general, I liked Vue and its simplicity. It’s really impressive how easy you can start using it without any previous experience. I believe it ideally fits for the prototyping of complex SPA-interfaces.</p><h3 id="AudioContext-API"><a href="#AudioContext-API" class="headerlink" title="AudioContext API"></a>AudioContext API</h3><p>At first, I’ve chosen an old-fashioned HTMLAudio. Later, I figured out it stops other sounds, e.g. if you’re listening to the music while the timer is working. It was the main reason I’ve eventually switched to the AudioContext API.</p><p>Another interesting point for me was the inability to play sound until the user starts interacting with your app. It definitely makes sense for me, since I still remember the end of the 90s when you could open the web-page and be stunned by web-page author’s musical preferences :)</p><h3 id="Progressive-Web-Application"><a href="#Progressive-Web-Application" class="headerlink" title="Progressive Web Application"></a>Progressive Web Application</h3><p>I used a <strong>workbox-webpack-plugin</strong> which did almost everything for me to transform SPA to PWA. For the sake of simplicity, it’s definitely worth using. One of the negative things about PWA was debugging and caching. Sometimes after changes in the code browser were still showing the previous result, sometimes it wasn’t. Removing PWA-plugin from dev-versions helped.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I understand there are so many beautiful timers across the WEB tailored for plenty of specific needs.&lt;/p&gt;
+&lt;p&gt;One of the reasons why I like my profession is that I can create everything I want in the way I want it to look and behave.&lt;/p&gt;
+&lt;p&gt;So let me introduce to you my &lt;a href=&quot;https://timer.makushev.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Outrun Timer&lt;/a&gt; app:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it works both online and offline&lt;/li&gt;
+&lt;li&gt;adapts to device screen size (phone, tablet, desktop)&lt;/li&gt;
+&lt;li&gt;might be added to your home screen as a standalone App. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Read more about my motivation, technical details and insights.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="English" scheme="http://makushev.com/categories/English/"/>
+    
+    
+      <category term="interval timer" scheme="http://makushev.com/tags/interval-timer/"/>
+    
+      <category term="outrun style" scheme="http://makushev.com/tags/outrun-style/"/>
+    
+      <category term="PWA" scheme="http://makushev.com/tags/PWA/"/>
+    
+  </entry>
   
   <entry>
     <title>I&#39;m back!</title>
