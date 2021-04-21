@@ -60,7 +60,8 @@
     </header>
     <div class="entry">
       
-        <p>Не случайно я хочу рассмотреть этот паттерн в первую очередь. Во-первых его назначение абсолютно понятно, и любой javascript-разработчик возможно даже не подозревает как часто он его использует.<br><a id="more"></a></p>
+        <p>Не случайно я хочу рассмотреть этот паттерн в первую очередь. Во-первых его назначение абсолютно понятно, и любой javascript-разработчик возможно даже не подозревает как часто он его использует.</p>
+<a id="more"></a>
 <h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h2><p>Observer, переводя на русский язык, означает “Наблюдатель”. Логично предположить, что если есть наблюдатель, то должен быть и предмет его наблюдения. Например, человек, который увлекается рыбалкой, постоянно является наблюдателем, когда смотрит на неподвижный поплавок. Естественно, целью наблюдения за поплавком является <strong>событие</strong>, которое заставит предпринять какое-либо <strong>действие</strong>.</p>
 <p>Переводя описанное выше на технические термины, можно выделить следующие детали. Паттер “Observer” полезен, когда:</p>
 <ul>
@@ -70,7 +71,8 @@
 <li>Есть действие (event handler) - в нашем случае - действие рыбака (предположим, он дергает удачку).</li>
 </ul>
 <p>Другими словами, использование паттерна нужно, когда 2 независимых объекта должны быть связаны между собой посредством какого-нибудь события.</p>
-<p>Чуть выше, я говорил о том, что многие не представляют, что уже постоянно используют этот подход. Посмотрим на пример:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'button'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">'button clicked'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Чуть выше, я говорил о том, что многие не представляют, что уже постоянно используют этот подход. Посмотрим на пример:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'button'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">'button clicked'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>Да, конструкция, которую знает даже школьник. Ну или продвинутый школьник. При клике на кнопку, мы хотим выводить сообщение о том, что кнопка нажата. Чувствуете аналогию с рыбаком? При подергивании поплавка - вынимай удочку.</p>
 <ul>
 <li>Subject в данном случае - кнопка (button);</li>
@@ -163,7 +165,7 @@
   
     <li><a href="/categories/English/">English</a><small>5</small></li>
   
-    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/categories/Русский/">Русский</a><small>17</small></li>
   
@@ -182,7 +184,7 @@
   
     <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
   
-    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/tags/IE/">IE</a><small>1</small></li>
   
@@ -204,6 +206,10 @@
   
     <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
   
+    <li><a href="/tags/a11y/">a11y</a><small>1</small></li>
+  
+    <li><a href="/tags/accessibility/">accessibility</a><small>1</small></li>
+  
     <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
   
     <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
@@ -211,6 +217,8 @@
     <li><a href="/tags/bug/">bug</a><small>2</small></li>
   
     <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/cheatsheet/">cheatsheet</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>1</small></li>
   

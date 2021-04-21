@@ -60,12 +60,16 @@
     </header>
     <div class="entry">
       
-        <p>Сегодня работал над необычной и от того интересной задачей. Выяснилось, что у наших менеджеров на определенной странице постоянно возникает сообщение “Опаньки” в Google Chrome. Скажу сразу, страница эта весьма насыщенная, в том числе фотогалереей, картой и панорамой Street View. У меня никак не получалось воспроизвести данный баг, и я собираюсь рассказать о том что было сделано для того, чтобы найти и обезвредить его.<br><a id="more"></a><br>Первым делом мы выяснили как и в какой последовательности нужно было действовать, чтобы получить то самое “Опаньки”. А для этого нужно было зайти на нашу страницу, и затем обновить ее (либо вернуться на нее позже). Все, открытый таб Chrome под Windows моментально умирал. </p>
+        <p>Сегодня работал над необычной и от того интересной задачей. Выяснилось, что у наших менеджеров на определенной странице постоянно возникает сообщение “Опаньки” в Google Chrome. Скажу сразу, страница эта весьма насыщенная, в том числе фотогалереей, картой и панорамой Street View. У меня никак не получалось воспроизвести данный баг, и я собираюсь рассказать о том что было сделано для того, чтобы найти и обезвредить его.</p>
+<a id="more"></a>
+<p>Первым делом мы выяснили как и в какой последовательности нужно было действовать, чтобы получить то самое “Опаньки”. А для этого нужно было зайти на нашу страницу, и затем обновить ее (либо вернуться на нее позже). Все, открытый таб Chrome под Windows моментально умирал. </p>
 <p>Я сделал небольшой изолированный пример в <a href="http://jsfiddle.net/7jm16rq7/" target="_blank" rel="noopener">JSFiddle</a>. Откройте данную ссылку, и после того, как увидите изображение панорамы, обновите страницу. Напоминаю, у вас должен быть Windows и Google Chrome (46.0.2490.86).</p>
 <p>Далее стало ясно, что проблема проявляется исключительно под Windows. Я работаю на Mac, но имею <a href="/2015/05/25/ie-mac-testing/">виртуалки на все случаи жизни</a>. Но даже на виртуалке данная проблема не проявлялась вовсе. Это, кстати, очень хороший пример того, что виртуалка не всегда может полноценно заменить реальную машину с реальным железом.</p>
-<p>Я начал гуглить, чтобы понять сталкивался ли кто-либо с такой проблемой. Но в итоге нагуглил о том, как в Google Chrome включить режим логгирования, чтобы лучше понимать, что же конкретно происходит, когда он показывает нам “Опаньку”. Как это сделать. Нужно запустить Google Chrome с флагом:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--enable-logging --v=1</span><br></pre></td></tr></table></figure></p>
+<p>Я начал гуглить, чтобы понять сталкивался ли кто-либо с такой проблемой. Но в итоге нагуглил о том, как в Google Chrome включить режим логгирования, чтобы лучше понимать, что же конкретно происходит, когда он показывает нам “Опаньку”. Как это сделать. Нужно запустить Google Chrome с флагом:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--enable-logging --v&#x3D;1</span><br></pre></td></tr></table></figure>
 <p>И затем, после падения браузера, найти в домашней директории лог <strong><em>chrome_debug.log</em></strong></p>
-<p>Так я и поступил. Провернули это все на машине с Windows и стали исследовать лог:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[7924:5320:1202/135210:VERBOSE1:policy_loader_win.cc(441)] Reading policy from the registry is enabled.</span><br><span class="line">[7924:5320:1202/135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(216)] 03885C38: set chrome proxy config service to 00A097F8</span><br><span class="line">[7924:5320:1202/135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(354)] 03885C38: Done pushing proxy to UpdateProxyConfig</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Pilot&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Aviator&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: DigiCert Log Server</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Rocketeer&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Certly.IO log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Izenpe log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Symantec log</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\GPUCache to C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\old_GPUCache_000</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_creator.cc(132)] Unable to create cache</span><br><span class="line">[7924:6044:1202/135210:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2</span><br></pre></td></tr></table></figure></p>
+<p>Так я и поступил. Провернули это все на машине с Windows и стали исследовать лог:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:policy_loader_win.cc(441)] Reading policy from the registry is enabled.</span><br><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(216)] 03885C38: set chrome proxy config service to 00A097F8</span><br><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(354)] 03885C38: Done pushing proxy to UpdateProxyConfig</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Pilot&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Aviator&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: DigiCert Log Server</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Rocketeer&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Certly.IO log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Izenpe log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Symantec log</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\GPUCache to C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\old_GPUCache_000</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_creator.cc(132)] Unable to create cache</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2</span><br></pre></td></tr></table></figure>
 <p>Мое внимание привлекли, конечно же, последние 4 строчки. Видно, что по каким-то неведомым причинам браузер не смог скопировать директорию GPUCache. Не могу сказать, что точно знаю как Chrome работает с GPU и с его кешем, но что-то последнее время сочетание Windows и GPU начало набивать аскомину.</p>
 <p>Дальше попеременным отключением карты и панорамы удалось установить, что причина была именно в Street View. Создал по этому поводу создал Issue в Chromium.</p>
 <h2 id="Вместо-итога"><a href="#Вместо-итога" class="headerlink" title="Вместо итога"></a>Вместо итога</h2><p>Целью написания данного миниисследование является показать сообществу, что такой баг существует, и, возможно, сэкономить время. Решить проблему в моем случае можно было бы перебором отключения компонентов, но хотелось понять в чем конкретно проблема. И исследуя ее, удалось заодно узнать много нового. </p>
@@ -150,7 +154,7 @@
   
     <li><a href="/categories/English/">English</a><small>5</small></li>
   
-    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/categories/Русский/">Русский</a><small>17</small></li>
   
@@ -169,7 +173,7 @@
   
     <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
   
-    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/tags/IE/">IE</a><small>1</small></li>
   
@@ -191,6 +195,10 @@
   
     <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
   
+    <li><a href="/tags/a11y/">a11y</a><small>1</small></li>
+  
+    <li><a href="/tags/accessibility/">accessibility</a><small>1</small></li>
+  
     <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
   
     <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
@@ -198,6 +206,8 @@
     <li><a href="/tags/bug/">bug</a><small>2</small></li>
   
     <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/cheatsheet/">cheatsheet</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>1</small></li>
   

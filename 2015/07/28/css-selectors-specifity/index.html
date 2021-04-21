@@ -63,7 +63,9 @@
         <p>Часто на собеседованиях на позицию фронтенд-разработчика или верстальщика любят давать задачки, где нужно определить как будет выглядеть тот или иной html-элемент, после применения сложных CSS селекторов. У опытных разработчиков, как правило, включается интуиция, основанная на собственных решениях и задачах. У начинающих и вовсе возникает ступор при виде сложных конструкций. </p>
 <p>Ясное дело (я надеюсь), что современный подход БЭМ-методологии (или просто соглашение внутри команды) исключает подобные головоломки в реальных приложениях, но ход рассуждений потенциального кандидата в таких задачах дает возможность оценить уровень его понимания материала. </p>
 <p>Но оказывается существует очень простой способ, запомнить который просто и самое интересное, что описан-то он <a href="http://www.w3.org/TR/css3-selectors/#specificity" target="_blank" rel="noopener">в спецификации W3C</a>. </p>
-<p>Я постараюсь изложить суть своим языком.<br><a id="more"></a><br>Итак, по сути существует 4 шага:</p>
+<p>Я постараюсь изложить суть своим языком.</p>
+<a id="more"></a>
+<p>Итак, по сути существует 4 шага:</p>
 <ul>
 <li>Посчитать количество селекторов #ID (и запомнить это число как A);</li>
 <li>посчитать количество селекторов .класса, [атрибутов], и :псевдо-классов (и запомнить как B);</li>
@@ -72,8 +74,8 @@
 </ul>
 <p><strong>Замечание!</strong> Нужно просто запомнить, что все, что находится внутри псевдо-класса :not(вот здесь), считается по этим же правилам, но при этом сам псевдо-класс <strong>:not()</strong> считать <strong>не нужно</strong>. Просто игнорируем его.</p>
 <p>А теперь соединяем полученные А-B-C вместе и смотрим какое число в результате получилось. Чем больше число, тем больше его вес.</p>
-<p>##Примеры<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*               <span class="comment">/*a=0, b=0, c=0     =&gt;  вес = 0     */</span></span><br><span class="line"><span class="selector-tag">UL</span>              <span class="comment">/*a=0, b=0, c=1     =&gt;  вес = 1     */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">LI</span>           <span class="comment">/*a=0, b=0, c=2     =&gt;  вес = 2     */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">OL</span>+<span class="selector-tag">LI</span>        <span class="comment">/*a=0, b=0, c=3     =&gt;  вес = 3     */</span></span><br><span class="line"><span class="selector-tag">H1</span> + *<span class="selector-attr">[REL=up]</span>  <span class="comment">/*a=0, b=1, c=1     =&gt;  вес = 11    */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">OL</span> <span class="selector-tag">LI</span><span class="selector-class">.red</span>    <span class="comment">/*a=0, b=1, c=3     =&gt;  вес = 13    */</span></span><br><span class="line"><span class="selector-tag">LI</span><span class="selector-class">.red</span><span class="selector-class">.level</span>    <span class="comment">/*a=0, b=2, c=1     =&gt;  вес = 21    */</span></span><br><span class="line"><span class="selector-id">#x34y</span>           <span class="comment">/*a=1, b=0, c=0     =&gt;  вес = 100   */</span></span><br><span class="line"><span class="selector-id">#s12</span><span class="selector-pseudo">:not(FOO)</span>   <span class="comment">/*a=1, b=0, c=1     =&gt;  вес = 101   */</span></span><br></pre></td></tr></table></figure></p>
-
+<p>##Примеры</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*               <span class="comment">/*a=0, b=0, c=0     =&gt;  вес = 0     */</span></span><br><span class="line"><span class="selector-tag">UL</span>              <span class="comment">/*a=0, b=0, c=1     =&gt;  вес = 1     */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">LI</span>           <span class="comment">/*a=0, b=0, c=2     =&gt;  вес = 2     */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">OL</span>+<span class="selector-tag">LI</span>        <span class="comment">/*a=0, b=0, c=3     =&gt;  вес = 3     */</span></span><br><span class="line"><span class="selector-tag">H1</span> + *<span class="selector-attr">[REL=up]</span>  <span class="comment">/*a=0, b=1, c=1     =&gt;  вес = 11    */</span></span><br><span class="line"><span class="selector-tag">UL</span> <span class="selector-tag">OL</span> <span class="selector-tag">LI</span><span class="selector-class">.red</span>    <span class="comment">/*a=0, b=1, c=3     =&gt;  вес = 13    */</span></span><br><span class="line"><span class="selector-tag">LI</span><span class="selector-class">.red</span><span class="selector-class">.level</span>    <span class="comment">/*a=0, b=2, c=1     =&gt;  вес = 21    */</span></span><br><span class="line"><span class="selector-id">#x34y</span>           <span class="comment">/*a=1, b=0, c=0     =&gt;  вес = 100   */</span></span><br><span class="line"><span class="selector-id">#s12</span><span class="selector-pseudo">:not(FOO)</span>   <span class="comment">/*a=1, b=0, c=1     =&gt;  вес = 101   */</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -151,7 +153,7 @@
   
     <li><a href="/categories/English/">English</a><small>5</small></li>
   
-    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/categories/Русский/">Русский</a><small>17</small></li>
   
@@ -170,7 +172,7 @@
   
     <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
   
-    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/tags/IE/">IE</a><small>1</small></li>
   
@@ -192,6 +194,10 @@
   
     <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
   
+    <li><a href="/tags/a11y/">a11y</a><small>1</small></li>
+  
+    <li><a href="/tags/accessibility/">accessibility</a><small>1</small></li>
+  
     <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
   
     <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
@@ -199,6 +205,8 @@
     <li><a href="/tags/bug/">bug</a><small>2</small></li>
   
     <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/cheatsheet/">cheatsheet</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>1</small></li>
   

@@ -60,14 +60,17 @@
     </header>
     <div class="entry">
       
-        <p>Когда <strong>Node.js</strong> только появился, появилось множество статей о том как же он хорош в мире Highload (к слову и не только в этом мире). Как же он быстро умеет обрабатывать входящие запросы. И как правило всегда все доводы сводились к тому, что <strong>Node.js</strong> использует <strong>event-driven</strong> подход. Это запомнили все, но как выяснилось понимают не все. Давайте разбираться.<br><a id="more"></a></p>
+        <p>Когда <strong>Node.js</strong> только появился, появилось множество статей о том как же он хорош в мире Highload (к слову и не только в этом мире). Как же он быстро умеет обрабатывать входящие запросы. И как правило всегда все доводы сводились к тому, что <strong>Node.js</strong> использует <strong>event-driven</strong> подход. Это запомнили все, но как выяснилось понимают не все. Давайте разбираться.</p>
+<a id="more"></a>
 <h2 id="Пример-из-жизни"><a href="#Пример-из-жизни" class="headerlink" title="Пример из жизни"></a>Пример из жизни</h2><h3 id="Blocking-I-O"><a href="#Blocking-I-O" class="headerlink" title="Blocking I/O"></a>Blocking I/O</h3><p>Представим, что мы пришли в сеть общепита, где продают фастфуд. И вот кассир нам уже машет и кричит “Свободная касса”. Мы подходим и начинаем выбирать какой бургер нам съесть. Выбрали, заказали и… Ждем. Ждем, пока наш заказ будет готов. Ждем как после этого кассир возьмет у нас деньги, выбьет чек и отдаст нам заказ. И все это время кассир тоже ждет. То есть, говоря техническим языком, он принял наш запрос, и пока что-то делается согласно нашему запросу, кассир <strong>заблокирован</strong> нами (blocking). А тут уже и народу поднабежало. И выстроилась целая очередь на обслуживание. А кассир один. И как следствие: чтобы увеличить количество обрабатываемых заказов - нужно увеличить количество кассиров. А это, как следствие, повышенная стоимость на обслуживание. Такая система становится дороже.</p>
 <h3 id="Non-blocking-I-O-и-event-driven-подход"><a href="#Non-blocking-I-O-и-event-driven-подход" class="headerlink" title="Non-blocking I/O и event-driven подход"></a>Non-blocking I/O и <strong>event-driven</strong> подход</h3><p>А теперь представим, что мы пришли все туда же. Кассир принял наш заказ, принял деньги и выдал нам чек с неким номером, который мы должны отслеживать на мониторе. Дальше он <em>передает заказ куда-то дальше</em>, где заказ будет готовиться и собираться, и при этом он готов обслуживать следующего клиента. То есть, здесь налицо <strong>отсутствие блокировки</strong> кассира (non-blocking I/O). И вот наш заказ готов, на экране появляется его номер, это своего рода событие, которое говорит о том, что заказ готов к выдаче, кассир берет его и отдает нам. Это и называется <strong>event-driven</strong> подходом.</p>
 <h2 id="Технически"><a href="#Технически" class="headerlink" title="Технически"></a>Технически</h2><p>Под I/O подразумеваются операции ввода/вывода, такие как чтение данных из файловой системы, или, например, БД. Обычно есть синхронный и асинхронный методы, для работы с такими ресурсами. Синхронные операции являются блокирующими, потому как требуют какой-то промежуток времени для их завершения, а обрабатывающий их поток - ждет пока они завершат свою работу. </p>
 <p>Классический режим работы веб-сервера использует <strong>thread-based</strong> подход, то есть четко как в нашем первом примере. На каждый запрос создается отдельный поток, который продолжает жить, пока не выполнится. Сколько будет запросов - столько потоков и будет создано. И это вроде бы не проблема, если запросов немного, а если это Highload-проект, где количество запросов может быть огромным, то проблема становится весомой.</p>
-<p>Представим в виде псевдокода thread-base подход с blocking I/O:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = getUserByName(<span class="string">'vladimir'</span>);</span><br><span class="line"><span class="comment">//waiting ...</span></span><br><span class="line">response.json(user);</span><br></pre></td></tr></table></figure></p>
+<p>Представим в виде псевдокода thread-base подход с blocking I/O:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = getUserByName(<span class="string">'vladimir'</span>);</span><br><span class="line"><span class="comment">//waiting ...</span></span><br><span class="line">response.json(user);</span><br></pre></td></tr></table></figure>
 <p>Как видно из примера выше, наш код синхронный. То есть выполняется линейно: строчка, где мы отдаем пользователя в формате JSON гарантировано всегда наступит после того, как мы получим пользователя. И вот этот промежуток времени между этими операциями будет простоем. Мощный сервер будет простаивать и просто ждать, вместо того, чтобы заниматься чем-то полезным в это время.</p>
-<p>А теперь посмотрим на <strong>event-driven</strong> подход:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getUserByName(<span class="string">'vladimir'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">user</span>)</span>&#123;</span><br><span class="line">	response.json(user);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>А теперь посмотрим на <strong>event-driven</strong> подход:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getUserByName(<span class="string">'vladimir'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">user</span>)</span>&#123;</span><br><span class="line">	response.json(user);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>Как видно из этого примера, мы использовали асинхронный подход. Мы как бы сказали серверу: “Получи данные пользователя <strong>vladimir</strong>“. А потом добавили: “Когда получишь - отдай их”. Здесь нужно понять разницу в этих двух подходах. В итоге сервер как тот кассир, принял заказ и пока не будет события о том, что он получил данные пользователя, он может заниматься другими вещами, например обрабатывать другой запрос другого клиента.</p>
 <h2 id="Примеры-вокруг"><a href="#Примеры-вокруг" class="headerlink" title="Примеры вокруг"></a>Примеры вокруг</h2><p>Я часто говорю о том, что все эти примеры окружают нас каждый день. Действительно, мы ведем себя всегда как <strong>event-driven</strong> механизм. Мы идем есть тогда, когда возникает событие о голоде. Да, пожалуй, это касается всех базовых инстинктов.</p>
 <p>Говоря о <strong>блокировке</strong> предлагаю подумать о том, как мы готовим (варим суп). Если бы мы все делали строго последовательно (синхронно), то мы блокировали бы себя только одной операцией. И пока, например, вода не нагреется (хотя от нас этот процесс не зависит), мы не переходим к подготовке других ингредиентов. В общем и целом, было бы все дольше и крайне неэффективно.</p>
@@ -149,7 +152,7 @@
   
     <li><a href="/categories/English/">English</a><small>5</small></li>
   
-    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/categories/Русский/">Русский</a><small>17</small></li>
   
@@ -168,7 +171,7 @@
   
     <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
   
-    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/tags/IE/">IE</a><small>1</small></li>
   
@@ -190,6 +193,10 @@
   
     <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
   
+    <li><a href="/tags/a11y/">a11y</a><small>1</small></li>
+  
+    <li><a href="/tags/accessibility/">accessibility</a><small>1</small></li>
+  
     <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
   
     <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
@@ -197,6 +204,8 @@
     <li><a href="/tags/bug/">bug</a><small>2</small></li>
   
     <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/cheatsheet/">cheatsheet</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>1</small></li>
   

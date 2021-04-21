@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .viewport {
+            border: 1px solid black;
+        }
+
+        .row {
+            background-color: aliceblue;
+        }
+
+        .row:nth-child(odd) {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Basic Virtual Scroll</h1>
+
+    <div class="viewport"></div>
+
+    <script src="virtual-scroll.js"></script>
+    <script>
+        const ROW_HEIGHT_PX = 20;
+        const CONTAINER_HEIGHT_PX = 220;
+
+        const virtualScroll = new VirtualScroll({
+            container: document.querySelector('.viewport'),
+            items: Array.from({ length: 30 }, (_, i) => `item-${i + 1}`),
+            containerHeightPx: CONTAINER_HEIGHT_PX,
+            rowHeightPx: ROW_HEIGHT_PX,
+            renderRow: (item) => `<div class="row" style="height: ${ROW_HEIGHT_PX}px">${item}</div>`,
+        });
+    </script>
+</body>
+
+</html>

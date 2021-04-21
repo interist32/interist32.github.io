@@ -60,11 +60,15 @@
     </header>
     <div class="entry">
       
-        <p>Today I was working on unusual and hence interesting task. The team manager reported about strange “Aw’ Snap!” Google Chrome message on a particular page. Have to say, that page has a gallery, map and Google Street View. I couldn’t reproduce this bug on my machine, and now I’m going to describe what we did to handle this issue.<br><a id="more"></a><br>First we made a plan to reproduce this bug and get “Aw’ snap!” message. All you need to do is open the page and refresh it (or come back to this page later). That’s all, Chrome’s tab dies instantly.</p>
+        <p>Today I was working on unusual and hence interesting task. The team manager reported about strange “Aw’ Snap!” Google Chrome message on a particular page. Have to say, that page has a gallery, map and Google Street View. I couldn’t reproduce this bug on my machine, and now I’m going to describe what we did to handle this issue.</p>
+<a id="more"></a>
+<p>First we made a plan to reproduce this bug and get “Aw’ snap!” message. All you need to do is open the page and refresh it (or come back to this page later). That’s all, Chrome’s tab dies instantly.</p>
 <p>We understood that bug reproduces in Windows only. I work on Mac, but as I wrote before, have <a href="/2015/05/25/ie-mac-testing/">virtual machines for any case</a>. But even on a VM this issue was not reproduces. By the way, this is a good example of Virtual Machine inability to reproduce “live” hardware machine.</p>
-<p>I started googling the issue and everything I’ve googled is “How to enable logging” in Chrome. I wanted to understand why Chrome crashed and what happened when It said “Aw’ Snap!”. So, to enable logging I run Chrome with flag:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--enable-logging --v=1</span><br></pre></td></tr></table></figure></p>
+<p>I started googling the issue and everything I’ve googled is “How to enable logging” in Chrome. I wanted to understand why Chrome crashed and what happened when It said “Aw’ Snap!”. So, to enable logging I run Chrome with flag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--enable-logging --v&#x3D;1</span><br></pre></td></tr></table></figure>
 <p>And then, after it crashes, log <strong><em>chrome_debug.log</em></strong> file is created in UserData directory.</p>
-<p>I did so. And started to inspect the log:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[7924:5320:1202/135210:VERBOSE1:policy_loader_win.cc(441)] Reading policy from the registry is enabled.</span><br><span class="line">[7924:5320:1202/135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(216)] 03885C38: set chrome proxy config service to 00A097F8</span><br><span class="line">[7924:5320:1202/135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(354)] 03885C38: Done pushing proxy to UpdateProxyConfig</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Pilot&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Aviator&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: DigiCert Log Server</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &apos;Rocketeer&apos; log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Certly.IO log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Izenpe log</span><br><span class="line">[7924:6044:1202/135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Symantec log</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\GPUCache to C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\old_GPUCache_000</span><br><span class="line">[7924:6044:1202/135210:ERROR:cache_creator.cc(132)] Unable to create cache</span><br><span class="line">[7924:6044:1202/135210:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2</span><br></pre></td></tr></table></figure></p>
+<p>I did so. And started to inspect the log:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:policy_loader_win.cc(441)] Reading policy from the registry is enabled.</span><br><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(216)] 03885C38: set chrome proxy config service to 00A097F8</span><br><span class="line">[7924:5320:1202&#x2F;135210:VERBOSE1:pref_proxy_config_tracker_impl.cc(354)] 03885C38: Done pushing proxy to UpdateProxyConfig</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Pilot&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Aviator&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: DigiCert Log Server</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Google &#39;Rocketeer&#39; log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Certly.IO log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Izenpe log</span><br><span class="line">[7924:6044:1202&#x2F;135210:VERBOSE1:multi_log_ct_verifier.cc(67)] Adding CT log: Symantec log</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\GPUCache to C:\Users\User32\AppData\Local\Google\Chrome\User Data\ShaderCache\old_GPUCache_000</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:cache_creator.cc(132)] Unable to create cache</span><br><span class="line">[7924:6044:1202&#x2F;135210:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2</span><br></pre></td></tr></table></figure>
 <p>I noticed, surely, last 4 strings. Obviously, browser for some reason couldn’t copy/move a <strong><em>GPUCache</em></strong> directory. I can’t really say that I understand how Chrome works with GPU and its cache, but talking about Windows and GPU is a popular subject last weeks.</p>
 <p>Further, switching maps and Street View, I found that problem is Street View. I created an Issue about it on Chromium.</p>
 <h2 id="Instead-of-outcome"><a href="#Instead-of-outcome" class="headerlink" title="Instead of outcome"></a>Instead of outcome</h2><p>I created an isolated example to reproduce this bug. <a href="http://jsfiddle.net/7jm16rq7/" target="_blank" rel="noopener">JSFiddle</a>.<br>Follow the link and after you see Street View image, refresh the page. Just to remember, you must have Windows as OS and Google Chrome (46.0.2490.86).</p>
@@ -148,7 +152,7 @@
   
     <li><a href="/categories/English/">English</a><small>5</small></li>
   
-    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/categories/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/categories/Русский/">Русский</a><small>17</small></li>
   
@@ -167,7 +171,7 @@
   
     <li><a href="/tags/ES2015-ES6/">ES2015/ES6</a><small>3</small></li>
   
-    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>3</small></li>
+    <li><a href="/tags/FAANG-Frontend/">FAANG-Frontend</a><small>4</small></li>
   
     <li><a href="/tags/IE/">IE</a><small>1</small></li>
   
@@ -189,6 +193,10 @@
   
     <li><a href="/tags/VirtualBox/">VirtualBox</a><small>1</small></li>
   
+    <li><a href="/tags/a11y/">a11y</a><small>1</small></li>
+  
+    <li><a href="/tags/accessibility/">accessibility</a><small>1</small></li>
+  
     <li><a href="/tags/arrow-functions/">arrow functions</a><small>1</small></li>
   
     <li><a href="/tags/blocking-I-O/">blocking I/O</a><small>1</small></li>
@@ -196,6 +204,8 @@
     <li><a href="/tags/bug/">bug</a><small>2</small></li>
   
     <li><a href="/tags/canvas/">canvas</a><small>2</small></li>
+  
+    <li><a href="/tags/cheatsheet/">cheatsheet</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>1</small></li>
   
