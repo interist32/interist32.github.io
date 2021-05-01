@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://makushev.com/"/>
-  <updated>2021-05-01T21:24:11.028Z</updated>
+  <updated>2021-05-01T21:26:32.848Z</updated>
   <id>http://makushev.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>frontend-system-design-plan</title>
+    <title>Frontend System Design plan</title>
     <link href="http://makushev.com/2021/04/21/frontend-system-design-plan/"/>
     <id>http://makushev.com/2021/04/21/frontend-system-design-plan/</id>
     <published>2021-04-21T10:53:54.000Z</published>
-    <updated>2021-05-01T21:24:11.028Z</updated>
+    <updated>2021-05-01T21:26:32.848Z</updated>
     
     <content type="html"><![CDATA[<p>Frontend System Design is different from Backend System Design. It’s a vague topic and it’s difficult to find proper books or articles of how to be prepared for it. Here’s my step-by-step plan of how to approach it.</p><a id="more"></a><h2 id="What-is-frontend-system-design"><a href="#What-is-frontend-system-design" class="headerlink" title="What is frontend system design?"></a>What is frontend system design?</h2><p>Usually, during the interview you’re given mockup/screenshot of some page that you need to design. There’s no coding, but you have to use drawing tools like <em>Google Draw</em> or <em>Excalidraw</em> as a whiteboard.</p><h2 id="Examples-of-questions"><a href="#Examples-of-questions" class="headerlink" title="Examples of questions"></a>Examples of questions</h2><p>There are some examples:</p><ul><li>Newsfeed</li><li>Pinterest</li><li>Chat application</li><li>Poll widget</li><li>Typeahead widget</li><li>Data table component</li></ul><p>There are some examples on <a href="https://bigfrontend.dev/design" target="_blank" rel="noopener">BFE.dev</a>. </p><p>The examples of Frontend System Design process might be found on the great <a href="https://www.youtube.com/channel/UC6YpkaZsAcAvPNt4rLiS7dg" target="_blank" rel="noopener">Front-End Engineer</a> Youtube-channel. </p><h2 id="Who-drives-the-discussion"><a href="#Who-drives-the-discussion" class="headerlink" title="Who drives the discussion?"></a>Who drives the discussion?</h2><p>It depends on the company you’re being interviewed for and sometimes on the interviewer. </p><p>It might look like a conversation when during the process you discuss several options and answer clarifying questions or it might be the total monologue as if you’re as an author presents your solution to a junior-level engineer.</p><h2 id="What-is-expected"><a href="#What-is-expected" class="headerlink" title="What is expected?"></a>What is expected?</h2><p>It’s expected that you’re able to solve such a vague question by breaking it down in small pieces.</p><ul><li>Drive conversation.</li><li>Demonstrate your <strong>knowledge depth</strong>. Tell more about details, show your expertise in deep understanding of what you know and don’t talk about you not aware of enough.</li><li>Demonstrate your <strong>knowledge bredth</strong>. Talk about various approaches, offer competetive technologies and provide pros and cons of them. Mention tradeoffs. Make a choice argumenting why you making it.</li><li>Don’t hesitate to go back and change you previous step decision if there are any signals for it.</li><li>Be ready to answer the questions realted to your own experience such as what did you designed well in the past and how would you change it now and why?</li></ul><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>It’s a general plan that based on what I’ve seen so far.</p><ol><li>Core requirements</li><li>Additional requirements</li><li>Components architecture</li><li>Data entities</li><li>API end points and protocol</li><li>Scalability</li><li>Frontend storage</li><li>UX concerns (pagination vs infinite scroll)</li><li>Optimization</li><li>Accessibility</li><li>Final thoughts</li></ol>]]></content>
     
