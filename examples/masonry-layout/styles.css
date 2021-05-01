@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.masonry-container {
+    position: relative;
+    margin: auto;
+}
+
+.masonry-container__pin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+.masonry-container__image {
+    border-radius: 15px;
+}
+
+.bottom-sentinel {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    z-index: 1;
+}
