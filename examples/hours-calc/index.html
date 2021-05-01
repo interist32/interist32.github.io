@@ -6,13 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hours calc</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <input class="time-start" type="text" placeholder="12:30">
-    <input class="time-diff" type="text" placeholder="1:45">
-    <button>Calc</button>
-    <div class="result"></div>
+    <main>
+        <form class="calc">
+            <input class="time-start" type="text" value="12:30">
+            <div class="plus">+</div>
+            <input class="time-diff" type="text" value="1:45">
+            <button type="submit">=</button>
+            <div class="result"></div>
+        </form>
+    </main>
     <script src="calc.js"></script>
 </body>
 

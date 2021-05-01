@@ -1,9 +1,10 @@
 const startTimeEl = document.querySelector('.time-start');
 const timeDiffEl = document.querySelector('.time-diff');
 const resultEl = document.querySelector('.result');
-const button = document.querySelector('button');
+const form = document.querySelector('.calc');
 
-button.addEventListener('click', () => {
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   const [startH, startM] = startTimeEl.value.split(':')
   const [diffH, diffM] = timeDiffEl.value.split(':');
 
